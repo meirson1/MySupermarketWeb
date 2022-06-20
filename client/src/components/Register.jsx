@@ -29,7 +29,7 @@ export default function Register() {
       type="button"
       className="btn btn-secondary"
       data-bs-toggle="modal"
-      data-bs-target="#addClientModal"
+      data-bs-target="#register"
     >
       <div className="d-flex align-items-center">
         <div>Register</div>
@@ -38,7 +38,7 @@ export default function Register() {
 
     <div
       className="modal fade"
-      id="addClientModal"
+      id="register"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
     >

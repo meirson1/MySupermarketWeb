@@ -25,7 +25,7 @@ export default function Login() {
       type="button"
       className="btn btn-secondary"
       data-bs-toggle="modal"
-      data-bs-target="#addClientModal"
+      data-bs-target="#login"
     >
       <div className="d-flex align-items-center">
         <div>Login</div>
@@ -34,7 +34,7 @@ export default function Login() {
 
     <div
       className="modal fade"
-      id="addClientModal"
+      id="login"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
     >
