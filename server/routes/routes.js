@@ -11,4 +11,8 @@ router.post("/signup",(req,res)=>{
     client.save().then(data=>res.json(data)).catch(err=>res.json(err))
 })
 
+router.post("/db",(req,res)=>{
+    (ClientSchema.find().then(data=>res.json(data)));
+})
+
 module.exports = router;

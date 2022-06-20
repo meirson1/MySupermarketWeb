@@ -1,4 +1,5 @@
 import React ,{useState} from 'react'
+import axios from "axios"
 
 export default function Register() {
   const [name, setName] = useState("");
@@ -18,6 +19,7 @@ export default function Register() {
     
     if (password !== passwordConfirm) return alert("Password does not match");
 
+    axios.post("http://localhost:8080/signup",{name:name,email:email,password:password}).then(res=>console.log(res.data));
     setName("");
     setEmail("");
     setPassword("");
