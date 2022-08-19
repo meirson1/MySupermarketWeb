@@ -12,7 +12,7 @@ const products = [
     "department": "fruit",
     "description": "Avocado ready for eat (each)",
     "imageUrl": "https://shop.wegmans.com/cdn-cgi/image/f=auto,q=80,dpr=1,h=200,w=200/https://d2d8wwwkmhfcva.cloudfront.net/800x/filters:fill(FFF,true):format(jpg)/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_075f3bee-baf9-4309-87a6-7f8331c01a00.jpg",
-    "price": 2,
+    "price": 2.00,
     "rating": 4
   },
   {
@@ -36,7 +36,7 @@ const products = [
     "department": "vegetable",
     "description": "Fresh and green packed broccoli.",
     "imageUrl": "https://shop.wegmans.com/cdn-cgi/image/f=auto,q=80,dpr=1,h=200,w=200/https://d2d8wwwkmhfcva.cloudfront.net/800x/filters:fill(FFF,true):format(jpg)/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_63be9a6e-3713-4e37-aa10-14a2eed96f7e.jpg",
-    "price": 1,
+    "price": 1.00,
     "rating": 0
   },
   {
@@ -92,7 +92,7 @@ const products = [
     "department": "vegetable",
     "description": "Raw organic green beans (1kg package)",
     "imageUrl": "https://shop.wegmans.com/cdn-cgi/image/f=auto,q=80,dpr=1,h=200,w=200/https://d2d8wwwkmhfcva.cloudfront.net/800x/filters:fill(FFF,true):format(jpg)/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_237886d9-4953-4ca2-894e-b7c43da392b6.jpg",
-    "price": 5,
+    "price": 5.00,
     "rating": 1
   },
   {
@@ -260,7 +260,7 @@ const products = [
     "department": "vegetable",
     "description": "Husked Bi-Color (5 packed corns).",
     "imageUrl": "https://shop.wegmans.com/cdn-cgi/image/f=auto,q=80,dpr=1,h=200,w=200/https://d2d8wwwkmhfcva.cloudfront.net/800x/filters:fill(FFF,true):format(jpg)/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_6e0fde83-9480-4c52-a105-29342ad06a84.jpg",
-    "price": 6,
+    "price": 6.00,
     "rating": 2
   },
   {
