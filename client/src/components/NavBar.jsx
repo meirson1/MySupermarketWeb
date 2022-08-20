@@ -55,12 +55,12 @@ const NavBar = () => {
           <>
             <li>
               <Link to="/login">
-                <FaSignInAlt /> Login
+                <FaSignInAlt /><span>Login</span> 
               </Link>
             </li>
             <li>
               <Link to="/register">
-                <FaUser /> Register
+                <FaUser /><span>Register</span> 
               </Link>
             </li>
           </>
