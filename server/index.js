@@ -2,13 +2,11 @@ const express = require("express");
 const colors = require("colors");
 const cors = require("cors");
 const Route = require("./routes/routes");
-const productsRoutes = require("./routes/productsRoutes");
 require("dotenv").config();
 const connectDB = require("./config/db");
 const productsData = require("./data/products");
 const Product = require("./models/Product"); 
 const port = process.env.PORT || 5000;
-
 const app = express();
 
 //Connect to MongoDB
@@ -28,7 +26,7 @@ importData();
 app.use(cors());
 app.use(express.json());
 app.use("/",Route);
-app.use("/api/products", productsRoutes);
+app.use("/api/products", Route);
 
 app.listen(port, console.log(`Server running on port ${port}`));
 
