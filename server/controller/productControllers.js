@@ -6,7 +6,7 @@ const getAllProducts = async (req, res) => {
     const products = await Product.find({}).sort({ name: "asc" });
     if (products) {
       res.status(200).send(products);
-      console.log("Products sent", products);
+      console.log(products.length, "Products from DB");
     } else {
       res
         .status(404)

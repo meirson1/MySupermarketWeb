@@ -1,20 +1,20 @@
-import "../styles/CartPage.css"
+import "../styles/CartPage.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 // Componnents
-import CartItem from "../components/CartItem"
+import CartItem from "../components/CartItem";
 
 // Actions
-import {addToCart, removeFromCart} from "../redux/actions/cartActions";
+import { addToCart, removeFromCart } from "../redux/actions/cartActions";
 
 const CartPage = () => {
   const dispatch = useDispatch();
 
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
-  
+
   useEffect(() => {}, []);
 
   const qtyChangeHandler = (id, qty) => {
@@ -68,4 +68,4 @@ const CartPage = () => {
     </>
   );
 };
-export default CartPage
+export default CartPage;

@@ -1,63 +1,63 @@
 .navbar {
-    width: 100%;
-    background-color: #171717;
-    display: flex;
-    justify-content: space-between;
-    padding: 1.5rem 1rem;
-    z-index: 50;
+  width: 100%;
+  background-color: #171717;
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem 1rem;
+  z-index: 50;
 }
 
 .navbar__logo h2 {
-    color: #f4f4f4;
-    font-size: 2rem;
-    cursor: pointer;
+  color: #f4f4f4;
+  font-size: 2rem;
+  cursor: pointer;
 }
 
 .navbar__links {
-display: flex;
-list-style: none;
-align-items: center;
+  display: flex;
+  list-style: none;
+  align-items: center;
 }
 
-.navbar__links >li {
- padding-left: 1.5rem;
+.navbar__links > li {
+  padding-left: 1.5rem;
 }
 
 .navbar__links > li > a {
-    text-decoration: none;
-    color: #f4f4f4;
-    font-size: 1.2rem;
-    display: flex;
-    align-items: center;
+  text-decoration: none;
+  color: #f4f4f4;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
 }
 
 .navbar__links > li > a > span {
-    display: flex;
-    align-items: center;
-    margin-left: 8px ;
+  display: flex;
+  align-items: center;
+  margin-left: 8px;
 }
 
 .cart_link {
-    background: #333;
-    padding: 10px;
-    border-radius: 8px;
+  background: #333;
+  padding: 10px;
+  border-radius: 8px;
 }
 
 .cart_link:hover {
-    background: #216cdd;
-    color: #f4f4f4;
+  background: #216cdd;
+  color: #f4f4f4;
 }
 
 .cartlogo__badge {
-    width: 30px;
-    height: 30px;
-    background: #f4f4f4;
-    border-radius: 50%;
-    margin-left: 8px;
-    color:#171717;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-size: 1rem;
+  width: 30px;
+  height: 30px;
+  background: #f4f4f4;
+  border-radius: 50%;
+  margin-left: 8px;
+  color: #171717;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 1rem;
 }

@@ -19,13 +19,12 @@ function App() {
       <Login></Login>
       <main>
         <Routes>
-        <Route exact path="/" element={<HomePage/>} />
-        <Route exact path = "/product/:id" element={<ProductPage />} />
-        <Route exact path="/cart" element={<CartPage/>} />
+          <Route exact path="/" element={<HomePage />} />
+          <Route exact path="/product/:id" element={<ProductPage />} />
+          <Route exact path="/cart" element={<CartPage />} />
         </Routes>
       </main>
     </Router>
-    
   );
 }
 
