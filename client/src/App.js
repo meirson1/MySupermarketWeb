@@ -1,17 +1,15 @@
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // Components
 import Login from "./components/Login";
 import Register from "./components/Register";
 import NavBar from "./components/NavBar";
 
-import Footer from "./components/Footer"
 // Pages
 import HomePage from "./pages/HomePage";
 import CartPage from "./pages/CartPage";
 import ProductPage from "./pages/ProductPage";
-
 
 function App() {
   return (
@@ -27,6 +25,7 @@ function App() {
         </Routes>
       </main>
     </Router>
+    
   );
 }
 

@@ -1,24 +1,30 @@
 import "../styles/CartItem.css"
 import {Link} from 'react-router-dom'
-const CartItem = () => {
-  return <div className="cartitem">
+const CartItem = ({item, qtyChangeHandler, removeHandler}) => {
+  return (
+    <div className="cartitem">
       <div className="cartitem__image">
-          <img src="https://shop.wegmans.com/cdn-cgi/image/f=auto,q=80,dpr=1,h=200,w=200/https://d2d8wwwkmhfcva.cloudfront.net/800x/filters:fill(FFF,true):format(jpg)/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_075f3bee-baf9-4309-87a6-7f8331c01a00.jpg" alt="product name"/>
+          <img src={item.imageUrl} 
+          alt={item.name}/>
       </div>
-      <Link to={`/product/${111}`} className="cartitem__name">
-          <p>Avocado</p> 
+      <Link to={`/product/${item.product}`} className="cartitem__name">
+          <p>{item.name}</p> 
         </Link>
-        <p className="cartitem__price">$2.00</p>
-        <select className="cartitem__select">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
+        <p className="cartitem__price">${item.price.toFixed(2)}</p>
+        <select
+        value={item.qty}
+        onChange={(e) => qtyChangeHandler(item.product, e.target.value)}
+        className="cartItem__select">
+        {[...Array(20).keys()].map((x) => (
+          <option key={x + 1} value={x + 1}>
+            {x + 1}
+          </option>
+        ))}
         </select>
-
-        <button className="cartitem__deleteBtn">
+        <button className="cartitem__deleteBtn" 
+        onClick={()=> removeHandler(item.product)}>
           <i className="fas fa-trash"></i>  
         </button>
     </div>
-}
+  )}
 export default CartItem
