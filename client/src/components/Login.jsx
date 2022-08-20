@@ -1,96 +1,103 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import { useState, useEffect } from "react";
+import { FaSignInAlt } from "react-icons/fa";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { login, reset } from "../auth/authSlice";
+import Spinner from "../components/Spinner";
 
-export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [clients, setClients] = useState([]);
+function Login() {
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const { email, password } = formData;
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { client, isLoading, isError, isSuccess, message } = useSelector(
+    (state) => state.auth
+  );
+
   useEffect(() => {
-    axios.post("http://localhost:8080/db").then((res) => setClients(res.data));
-  }, []);
+    if (isError) {
+      toast.error(message);
+    }
 
-  console.log("====================================");
-  console.log(clients);
-  console.log("====================================");
+    if (isSuccess || client) {
+      navigate("/");
+    }
 
-  const handleSubmit = (e) => {
+    dispatch(reset());
+  }, [client, isError, isSuccess, message, navigate, dispatch]);
+
+  const onChange = (e) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const onSubmit = (e) => {
     e.preventDefault();
 
-    console.log("email: ", email);
-    console.log("password: ", password);
+    const clientData = {
+      email,
+      password,
+    };
 
-    if (email === "" || password === "")
-      return alert("Please fill in all fields");
-
-    setEmail("");
-    setPassword("");
+    dispatch(login(clientData));
   };
+
+  if (isLoading) {
+    return <Spinner />;
+  }
+
   return (
     <>
-      <button
-        type="button"
-        className="btn btn-secondary"
-        data-bs-toggle="modal"
-        data-bs-target="#login"
-      >
-        <div className="d-flex align-items-center">
-          <div>Login</div>
-        </div>
-      </button>
+      <section className="heading">
+        <h1>
+          <FaSignInAlt /> Login
+        </h1>
+        <p>Login and start shoping</p>
+      </section>
 
-      <div
-        className="modal fade"
-        id="login"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLabel">
-                Login
-              </h5>
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div className="modal-body">
-              <form onSubmit={handleSubmit}>
-                <div className="mb-3">
-                  <label className="form-label">Email</label>
-                  <input
-                    type="email"
-                    className="form-control"
-                    id="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  ></input>
-                </div>
-                <div className="mb-3">
-                  <label className="form-label">Password</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="setPassword"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                  ></input>
-                </div>
-                <button
-                  type="submit"
-                  data-bs-dismiss="modal"
-                  className="btn btn-secondary"
-                >
-                  Submit
-                </button>
-              </form>
-            </div>
+      <section className="form">
+        <form onSubmit={onSubmit}>
+          <div className="form-group">
+            <input
+              type="email"
+              className="form-control"
+              id="email"
+              name="email"
+              value={email}
+              placeholder="Enter your email"
+              onChange={onChange}
+            />
           </div>
-        </div>
-      </div>
+          <div className="form-group">
+            <input
+              type="password"
+              className="form-control"
+              id="password"
+              name="password"
+              value={password}
+              placeholder="Enter password"
+              onChange={onChange}
+            />
+          </div>
+
+          <div className="form-group">
+            <button type="submit" className="btn btn-block">
+              Submit
+            </button>
+          </div>
+        </form>
+      </section>
     </>
   );
 }
+
+export default Login;

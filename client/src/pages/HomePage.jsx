@@ -1,18 +1,26 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
-export default function HomePage() {
-  const [clients, setClients] = useState([]);
+function HomePage() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { client } = useSelector((state) => state.auth);
+
   useEffect(() => {
-    axios.post("http://localhost:8080/db").then((res) => setClients(res.data));
-  }, [clients]);
+    if (!client) {
+      navigate("/login");
+    }
+  }, [client, navigate, dispatch]);
 
   return (
-    <div>
-      <h1>HomePage</h1>
-      {clients.map((client) => {
-        return <p key={client.id}>{client.name}</p>;
-      })}
-    </div>
+    <>
+      <section className="heading">
+        <h1>Welcome {client && client.name}</h1>
+      </section>
+    </>
   );
 }
+
+export default HomePage;
