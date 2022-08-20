@@ -17,6 +17,8 @@ function App() {
   return (
     <Router>
       <NavBar></NavBar>
+      <Header></Header>
+      <Footer></Footer>
       <Register></Register>
       <Login></Login>
       <main>
