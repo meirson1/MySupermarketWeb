@@ -13,6 +13,6 @@ connectDB();
 
 app.use(cors());
 app.use(express.json());
-app.use("/",Route);
+app.use("/", Route);
 
 app.listen(port, console.log(`Server running on port ${port}`));
