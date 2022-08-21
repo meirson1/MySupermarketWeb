@@ -13,7 +13,6 @@ function HomePage() {
       navigate("/login");
     }
   }, [client, navigate, dispatch]);
-
   return (
     <>
       <section className="heading">

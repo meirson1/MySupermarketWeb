@@ -28,7 +28,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 app.use("/api/clients", require("./routes/clientRoutes"));
 app.use("/api/products", require("./routes/productsRoutes"));
-
+app.use("/api/carts", require("./routes/cartsRoutes"));
 app.listen(port, console.log(`Server running on port ${port}`));
 
 app.get("/importProducts", async (req, res) => {
