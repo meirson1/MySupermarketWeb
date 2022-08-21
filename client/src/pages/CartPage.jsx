@@ -42,7 +42,7 @@ const CartPage = () => {
           <h2>Shopping Cart</h2>
           {cartItems.length === 0 ? (
             <div>
-              Your Cart Is Empty <Link to="/">Go Back</Link>
+              Your Cart Is Empty <Link to="/shop">Go Back</Link>
             </div>
           ) : (
             cartItems.map((item) => (

@@ -22,8 +22,10 @@
   font-weight: bold;
 }
 .info__name {
-  font-size: 1rem;
+  font-size: 1.4rem;
   overflow: hidden;
+  text-shadow: 0 0.8px 1px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease-out;
 }
 
 .info__description {

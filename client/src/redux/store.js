@@ -3,28 +3,35 @@ import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 // Reducers
-import { cartReducer } from './reducers/CartRducers';
-import { getProductsDetailsReducer, getProductsReducer } from './reducers/productReducer';
+import { cartReducer } from "./reducers/CartRducers";
+import authReducer from "../auth/authSlice";
+import {
+  getProductsDetailsReducer,
+  getProductsReducer,
+} from "./reducers/productReducer";
 import { getLocationsReducer } from './reducers/locationReducer';
 
 const reducer = combineReducers({
-    cart: cartReducer,
-    getProducts: getProductsReducer ,
-    getProductDetails: getProductsDetailsReducer,
-    getLocations: getLocationsReducer,
+  auth: authReducer,
+  cart: cartReducer,
+  getProducts: getProductsReducer,
+  getProductDetails: getProductsDetailsReducer,
+  getLocations: getLocationsReducer,
 });
 
 const middleware = [thunk];
-const cartFromLocalStorage = localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart")) :[]
+const cartFromLocalStorage = localStorage.getItem("cart")
+  ? JSON.parse(localStorage.getItem("cart"))
+  : [];
 const INITIAL_STATE = {
-    cart: {
-        cartItems: cartFromLocalStorage
-    }
-}
+  cart: {
+    cartItems: cartFromLocalStorage,
+  },
+};
 const store = createStore(
-    reducer, 
-    INITIAL_STATE, 
-    composeWithDevTools(applyMiddleware(...middleware))
+  reducer,
+  INITIAL_STATE,
+  composeWithDevTools(applyMiddleware(...middleware))
 );
 
 export default store;
