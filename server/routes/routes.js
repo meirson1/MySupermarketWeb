@@ -6,6 +6,10 @@ const {
   getProductById,
 } = require("../controller/productControllers");
 
+const {
+    getAllLocations,
+  } = require("../controller/locationControllers");
+
 router.post("/signup", (req, res) => {
   const client = new ClientSchema({
     name: req.body.name,
@@ -24,6 +28,10 @@ router.get("/api/products", (req, res) => {
 
 router.get("/api/products/:id", (req, res) => {
   getProductById(req, res);
+});
+
+router.get("/api/locations", (req, res) => {
+    getAllLocations(req, res);
 });
 
 module.exports = router;
