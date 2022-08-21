@@ -11,14 +11,14 @@ import { addToCart, removeFromCart } from "../redux/actions/cartActions";
 
 const CartPage = () => {
   const dispatch = useDispatch();
-
+  const { client } = useSelector((state) => state.auth);
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
 
   useEffect(() => {}, []);
 
   const qtyChangeHandler = (id, qty) => {
-    dispatch(addToCart(id, qty));
+    dispatch(addToCart(client.id, id, qty));
   };
 
   const removeFromCartHandler = (id) => {

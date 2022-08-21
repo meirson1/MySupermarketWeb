@@ -7,6 +7,10 @@ const {
 } = require("../controller/userController");
 const { protect } = require("../middleware/authMiddleware");
 
+router.get("/admin", (req, res) => {
+  getAllClients(req, res);
+});
+
 router.post("/", registerClient);
 router.post("/login", loginClient);
 router.get("/me", protect, getMe);

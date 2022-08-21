@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const asyncHandler = require("express-async-handler");
+const express = require("express");
 const Client = require("../models/Client");
 
 // @desc    Register new client
@@ -82,8 +83,26 @@ const generateToken = (id) => {
   });
 };
 
+const getAllClients = async (req, res) => {
+  try {
+    const clients = await Client.find({}).sort({ name: "asc" });
+    if (clients) {
+      res.status(200).send(clients);
+      console.log(clients.length, "clients from DB");
+    } else {
+      res
+        .status(404)
+        .send({ code: 404, message: `There is an error with your clients` });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ message: error.message });
+  }
+};
+
 module.exports = {
   registerClient,
   loginClient,
   getMe,
+  getAllClients,
 };
