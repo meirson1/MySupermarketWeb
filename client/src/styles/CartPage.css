@@ -37,10 +37,13 @@
   color: #f4f4f4;
   border: 1px solid #171717;
   cursor: pointer;
+  border-radius: 2px;
 }
 
-.cartpage__right div button:hover {
-  opacity: 0.9;
+.cartpage__right div button:disabled,
+.cartpage__right div button[disabled] {
+  cursor: not-allowed;
+  opacity: 0.4;
 }
 
 @media (max-width: 1320px) {
