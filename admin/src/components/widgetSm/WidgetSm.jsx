@@ -9,26 +9,29 @@ export default function WidgetSm() {
   const [clients, setClients] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(API_URL)
-      .then((res) => res.json())
-      .then((data) => setClients(data));
-  }, [clients]);
+    axios.get(API_URL).then((data) => setClients(data.data));
+  }, []);
 
-  console.log(clients);
   return (
     <div className="widgetSm">
       <span className="widgetSmTitle">Clients</span>
       <ul className="widgetSmList">
-        <li className="widgetSmListItem">
-          <div className="widgetSmUser">
-            <span className="widgetSmUsername">Client</span>
-          </div>
-          <button className="widgetSmButton">
-            <Visibility className="widgetSmIcon" />
-            Display
-          </button>
-        </li>
+        {clients.map((client) => {
+          return (
+            <li key={client._id} className="widgetSmListItem">
+              <div className="widgetSmUser">
+                <span className="widgetSmUsername">{client.name}</span>
+              </div>
+              <div className="widgetSmUser">
+                <span className="widgetSmUsername">{client.email}</span>
+              </div>
+              <button className="widgetSmButton">
+                <Visibility className="widgetSmIcon" />
+                Display
+              </button>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
