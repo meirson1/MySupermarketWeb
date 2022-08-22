@@ -3,19 +3,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { GoogleMap, MarkerF, InfoWindow } from '@react-google-maps/api';
 import { getLocations as listLocations} from "../redux/actions/locationActions";
 
-// const locations = [
-// 	{
-// 		name: "Shop 1",
-// 		lat: 32.072220218970294,
-// 		lng: 34.78578868438252,
-// 	}
-// ];
 
 function Map () {
 	
 const dispatch = useDispatch();
 const getLocations = useSelector((state) => state.getLocations);
-const { locations, loading, error } = getLocations;
+const { locations } = getLocations;
 
 useEffect(() => {
   dispatch(listLocations());
@@ -28,8 +21,8 @@ useEffect(() => {
   }
 	
   const mapStyles = {        
-    height: "100vh",
-    width: "100%"};
+    height: "40vh",
+    width: "40%"};
   
   const defaultCenter = {
     lat: 32.07018929655174, lng: 34.794164715631155
