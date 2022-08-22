@@ -3,7 +3,7 @@ const router = express.Router();
 const {
   getAllProducts,
   getProductById,
-} = require("../controller/productControllers");
+} = require("../controller/productController");
 
 router.get("/", (req, res) => {
   getAllProducts(req, res);
