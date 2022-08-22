@@ -6,6 +6,7 @@ const {
   getMe,
   getAllClients,
   getClientById,
+  updateClientById,
 } = require("../controller/userController");
 const { protect } = require("../middleware/authMiddleware");
 
@@ -14,6 +15,10 @@ router.get("/admin", (req, res) => {
 });
 router.get("/admin/:id", (req, res) => {
   getClientById(req, res);
+});
+
+router.put("/admin/update/:id", (req, res) => {
+  updateClientById(req, res);
 });
 
 router.post("/", registerClient);

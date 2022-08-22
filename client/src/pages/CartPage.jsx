@@ -1,21 +1,38 @@
 import "../styles/CartPage.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
 // Componnents
 import CartItem from "../components/CartItem";
 
 // Actions
-import { addToCart, removeFromCart } from "../redux/actions/cartActions";
+import {
+  addToCart,
+  removeFromCart,
+  sendCartDataToDB,
+} from "../redux/actions/cartActions";
 
 const CartPage = () => {
   const dispatch = useDispatch();
   const { client } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    if (!client) {
+      navigate("/login");
+    }
+    if (cartItems == []) {
+      navigate("/shop");
+    }
+  }, [client, navigate, dispatch]);
+
+  useEffect(() => {
+    if (!cartItems) {
+      navigate("/shop");
+    }
+  }, [cartItems, navigate, dispatch]);
 
   const qtyChangeHandler = (id, qty) => {
     dispatch(addToCart(client.id, id, qty));
@@ -35,14 +52,19 @@ const CartPage = () => {
       .toFixed(2);
   };
 
+  const submitCart = () => {
+    alert(`${client.name} thank you for buying, see you next time!`);
+    dispatch(sendCartDataToDB(client, cartItems, getCartSubTotal()));
+  };
+
   return (
     <>
       <div className="cartpage">
         <div className="cartpage__left">
-          <h2>Shopping Cart</h2>
+          <h1>Shopping Cart</h1>
           {cartItems.length === 0 ? (
             <div>
-              Your Cart Is Empty <Link to="/">Go Back</Link>
+              Your Cart Is Empty <Link to="/shop">Go Back</Link>
             </div>
           ) : (
             cartItems.map((item) => (
@@ -61,11 +83,18 @@ const CartPage = () => {
             <p>${getCartSubTotal()}</p>
           </div>
           <div>
-            <button>Proceed To Checkout</button>
+            <button
+              type="button"
+              onClick={submitCart}
+              disabled={cartItems.length === 0}
+            >
+              Proceed To Checkout
+            </button>
           </div>
         </div>
       </div>
     </>
   );
 };
+
 export default CartPage;

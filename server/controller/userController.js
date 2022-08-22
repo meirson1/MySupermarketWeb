@@ -115,10 +115,26 @@ const getClientById = async (req, res) => {
   }
 };
 
+const updateClientById = async (req, res) => {
+  try {
+    const client = await Client.findByIdAndUpdate(req.params.id);
+    if (client) {
+      res.status(200).send(client);
+    } else {
+      console.info({ id }, "client does not exist");
+      res.status(500).send({ message: error.message });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ message: error.message });
+  }
+};
+
 module.exports = {
   registerClient,
   loginClient,
   getMe,
   getAllClients,
   getClientById,
+  updateClientById,
 };

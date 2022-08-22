@@ -1,6 +1,7 @@
 import "./widgetSm.css";
 import { Visibility } from "@mui/icons-material";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 const API_URL = "http://localhost:8080/api/clients/admin";
@@ -25,10 +26,15 @@ export default function WidgetSm() {
               <div className="widgetSmUser">
                 <span className="widgetSmUsername">{client.email}</span>
               </div>
-              <button className="widgetSmButton">
-                <Visibility className="widgetSmIcon" />
-                Display
-              </button>
+              <Link
+                style={{ textDecoration: "none" }}
+                to={`user/${client._id}`}
+              >
+                <button className="widgetSmButton">
+                  <Visibility className="widgetSmIcon" />
+                  Display
+                </button>
+              </Link>
             </li>
           );
         })}
