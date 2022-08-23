@@ -20,20 +20,20 @@ export default function UserList() {
   };
 
   const columns = [
-    { field: "id", headerName: "ID", width: 250 },
+    { field: "id", headerName: "ID", width: 350 },
     {
       field: "user",
       headerName: "User",
-      width: 200,
+      width: 350,
       renderCell: (params) => {
         return <div className="userListUser">{params.row.name}</div>;
       },
     },
-    { field: "email", headerName: "Email", width: 200 },
+    { field: "email", headerName: "Email", width: 350 },
     {
       field: "action",
       headerName: "Action",
-      width: 150,
+      width: 350,
       renderCell: (params) => {
         return (
           <>

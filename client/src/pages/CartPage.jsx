@@ -23,7 +23,7 @@ const CartPage = () => {
     if (!client) {
       navigate("/login");
     }
-    if (cartItems == []) {
+    if (cartItems === []) {
       navigate("/shop");
     }
   }, [client, navigate, dispatch]);
