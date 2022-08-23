@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import "../styles/weather.css"
  function Weather() {
   const [data, setData] = useState({})
   const [location, setLocation] = useState('')
@@ -17,9 +18,9 @@ import axios from 'axios'
   }
 
   return (
-    <div className="app">
+    <div className="weather">
       <div className="search">
-        <input
+        <input 
           value={location}
           onChange={event => setLocation(event.target.value)}
           onKeyPress={searchLocation}

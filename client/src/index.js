@@ -5,15 +5,14 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import store from "./redux/store";
-import "./style.css";
-import Weather from "./components/weather"; 
+
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
     <React.StrictMode>
       <App />
-      <Weather />
     </React.StrictMode>
   </Provider>
 );
