@@ -14,19 +14,11 @@ export const TopProductsChart = () => {
     dispatch(listTopProducts());
   }, [dispatch]);
 
-  var cols = [
-  ];
-  
-  if(topProducts[0]){
-    console.log();
-    cols = topProducts.map(item => [item._id, item.count]);
-  }
-
   React.useEffect(() => {
     c3.generate({
       bindto: "#chartProducts",
       data: {
-        columns: cols,
+        columns: topProducts.map(item => [item._id, item.count]),
         type: "bar",
       },
     });
