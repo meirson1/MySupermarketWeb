@@ -32,3 +32,25 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
       return state;
   }
 };
+
+export const getStatsReducer = (state = { topProducts: [] }, action) => {
+  switch (action.type) {
+    case actionTypes.GET_TOP_PRODUCTS_REQUEST:
+      return {
+        loading: true,
+        topProducts: [],
+      };
+    case actionTypes.GET_TOP_PRODUCTS_SUCCESS:
+      return {
+        loading: false,
+        topProducts: action.payload,
+      };
+    case actionTypes.GET_TOP_PRODUCTS_FAIL:
+      return {
+        loading: false,
+        error: action.payload,
+      };
+    default:
+      return state;
+  }
+};

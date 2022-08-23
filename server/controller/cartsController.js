@@ -17,6 +17,23 @@ const saveCartToDB = async (req, res) => {
   }
 };
 
+const getTopProducts = async (req, res) => {
+  try {
+    const topProducts = await Cart.aggregate([
+      {$unwind:"$products"},
+      {$group: {"_id" : "$products.name", "count": {$sum:1}}},
+      {$sort : {count: -1}},
+      {$limit: 10},
+      ]);
+    if (topProducts) {
+      res.status(200).send(JSON.stringify(topProducts));
+    }
+  } catch (error) {
+    res.status(500).send({ message: error.message });
+  }
+};
+
 module.exports = {
   saveCartToDB,
+  getTopProducts,
 };
