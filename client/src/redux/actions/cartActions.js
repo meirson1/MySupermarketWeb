@@ -66,4 +66,23 @@ export const sendCartDataToDB =
       });
     }
   };
+
+export const getDepartmentsPie = () => async (dispatch) => {
+  try {
+    dispatch({ type: actionTypes.GET_DEPARTMENTS_PIE_REQUEST });
+    const { data } = await axios.get("http://localhost:8080/api/carts/DepartmentsPie");
+    dispatch({
+      type: actionTypes.GET_DEPARTMENTS_PIE_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: actionTypes.GET_DEPARTMENTS_PIE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
   

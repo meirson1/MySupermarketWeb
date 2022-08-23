@@ -33,7 +33,50 @@ const getTopProducts = async (req, res) => {
   }
 };
 
+const getDepartmentsPie = async (req, res) => {
+  try {
+    const departmentsPie = await Cart.aggregate([
+      {$unwind:"$products"},
+      {$group: {"_id" : "$products.name", "count": {$sum:1}}},
+      {$lookup: {"from": "products", "localField": "_id", "foreignField": "name", "as": "Product"}},
+      {$unwind:"$Product"},
+      {$group: {"_id" : "$Product.department", "sum": {$sum:"$count"}}},
+      ]);
+    if (departmentsPie) {
+      res.status(200).send(JSON.stringify(departmentsPie));
+    }
+  } catch (error) {
+    res.status(500).send({ message: error.message });
+  }
+};
+
+const getSuggestion = async (req, res) => {
+  try {
+    const topDepartment = await Cart.aggregate([
+      {$match: {"userId": req.params.id}},
+      {$unwind:"$products"},
+      {$group: {"_id" : "$products.name", "count": {$sum:1}}},
+      {$lookup: {"from": "products", "localField": "_id", "foreignField": "name", "as": "Product"}},
+      {$unwind:"$Product"},
+      {$group: {"_id" : "$Product.department", "sum": {$sum:"$count"}}},
+      {$sort : {sum: -1}},
+      {$limit: 1},
+      ]);
+      
+    if (topDepartment && topDepartment.length > 0) {
+      res.status(200).send(topDepartment);
+    } else {
+      res.status(200).send(["to do: Top product"]);
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ message: error.message });
+  }
+};
+
 module.exports = {
   saveCartToDB,
   getTopProducts,
+  getDepartmentsPie,
+  getSuggestion,
 };

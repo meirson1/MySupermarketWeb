@@ -54,3 +54,25 @@ export const getStatsReducer = (state = { topProducts: [] }, action) => {
       return state;
   }
 };
+
+export const getDepartmentsPieReducer = (state = { departmentsPie: [] }, action) => {
+  switch (action.type) {
+    case actionTypes.GET_DEPARTMENTS_PIE_REQUEST:
+      return {
+        loading: true,
+        departmentsPie: [],
+      };
+    case actionTypes.GET_DEPARTMENTS_PIE_SUCCESS:
+      return {
+        loading: false,
+        departmentsPie: action.payload,
+      };
+    case actionTypes.GET_DEPARTMENTS_PIE_FAIL:
+      return {
+        loading: false,
+        error: action.payload,
+      };
+    default:
+      return state;
+  }
+};
