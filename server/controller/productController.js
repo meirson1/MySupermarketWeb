@@ -75,9 +75,29 @@ const removeProductById = async (req, res) => {
   } catch (error) {}
 };
 
+const createProduct = async (req, res) => {
+  try {
+    const { name, department, description, price, rating, imageUrl } = req.body;
+    const product = await Product.create({
+      name,
+      department,
+      description,
+      price,
+      rating,
+      imageUrl,
+    });
+    if (product) {
+      res.status(200).send("product is saved");
+    }
+  } catch (error) {
+    res.status(500).send({ message: error.message });
+  }
+};
+
 module.exports = {
   getAllProducts,
   getProductById,
   updateProductById,
   removeProductById,
+  createProduct,
 };

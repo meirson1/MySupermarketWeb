@@ -1,25 +1,63 @@
 import "./newProduct.css";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { toast } from "react-toastify";
+import axios from "axios";
 
 export default function NewProduct() {
+  const [newName, setNewName] = useState("");
+  const [newDepartment, setNewDepartment] = useState("");
+  const [newDescription, setNewDescription] = useState("");
+  const [newPrice, setNewPrice] = useState("");
+  const [newRating, setNewRating] = useState("");
+  const [newImageUrl, setNewImageUrl] = useState("");
+
+  const navigate = useNavigate();
+  const API_URL = "http://localhost:8080/api/products/admin/create";
+
+  const onSubmit = (e) => {
+    if (
+      newName === "" ||
+      newDepartment === "" ||
+      newDescription === "" ||
+      newPrice === "" ||
+      newRating === "" ||
+      newImageUrl === ""
+    ) {
+      toast.error("Please fill all the fields");
+    } else {
+      axios
+        .post(API_URL, {
+          name: newName,
+          department: newDepartment,
+          description: newDescription,
+          price: newPrice,
+          rating: newRating,
+          imageUrl: newImageUrl,
+        })
+        .then((res) => console.log(res.data));
+
+      setNewName("");
+      setNewDepartment("");
+      setNewDescription("");
+      setNewPrice("");
+      setNewRating("");
+      setNewImageUrl("");
+      navigate("/products");
+    }
+  };
   return (
     <div className="newProduct">
       <h1 className="addProductTitle">New Product</h1>
-      <form className="addProductForm">
-        <div className="addProductItem">
-          <label>Image</label>
-          <input
-            type="file"
-            id="file"
-            // onChange={(e) => setFile(e.target.files[0])}
-          />
-        </div>
+      <form onSubmit={onSubmit} className="addProductForm">
         <div className="addProductItem">
           <label>Title</label>
           <input
             name="title"
             type="text"
+            value={newName}
             placeholder="Apple"
-            // onChange={handleChange}
+            onChange={(e) => setNewName(e.target.value)}
           />
         </div>
         <div className="addProductItem">
@@ -27,8 +65,9 @@ export default function NewProduct() {
           <input
             name="desc"
             type="text"
+            value={newDepartment}
             placeholder="department..."
-            // onChange={handleChange}
+            onChange={(e) => setNewDepartment(e.target.value)}
           />
         </div>
         <div className="addProductItem">
@@ -36,8 +75,9 @@ export default function NewProduct() {
           <input
             name="desc"
             type="text"
+            value={newDescription}
             placeholder="description..."
-            // onChange={handleChange}
+            onChange={(e) => setNewDescription(e.target.value)}
           />
         </div>
         <div className="addProductItem">
@@ -45,22 +85,32 @@ export default function NewProduct() {
           <input
             name="price"
             type="number"
+            value={newPrice}
             placeholder="100$"
-            // onChange={handleChange}
+            onChange={(e) => setNewPrice(e.target.value)}
           />
         </div>
         <div className="addProductItem">
-          <label>Rating</label>
+          <label>Price</label>
           <input
-            name="rating"
+            name="price"
             type="number"
+            value={newRating}
             placeholder="1-5"
-            // onChange={handleChange}
+            onChange={(e) => setNewRating(e.target.value)}
           />
         </div>
-        <button /*onChange={handleClick}*/ className="addProductButton">
-          Create
-        </button>
+        <div className="addProductItem">
+          <label>Image</label>
+          <input
+            name="imageUrl"
+            type="text"
+            value={newImageUrl}
+            placeholder="http://photos.com/imageOrange"
+            onChange={(e) => setNewImageUrl(e.target.value)}
+          />
+        </div>
+        <button className="addProductButton">Create</button>
       </form>
     </div>
   );
