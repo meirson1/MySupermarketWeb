@@ -29,8 +29,8 @@ const getAllCarts = async (req, res) => {
         .send({ code: 404, message: `There is an error with your carts` });
     }
   } catch (error) {
-    console.log(error);
-    res.status(500).send({ message: error.message });
+    // console.log("error");
+    // res.status(500).send({ message: error.message });
   }
 };
 

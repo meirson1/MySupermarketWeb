@@ -16,7 +16,17 @@ export default function User() {
 
   useEffect(() => {
     axios.get(API_URL).then((data) => setClient(data.data));
-  }, []);
+  }, [client]);
+
+  const [newName, setNewName] = useState("");
+  const [newEmail, setNewEmail] = useState("");
+
+  const updateUser = async (id) => {
+    await axios.put(`http://localhost:8080/api/clients/admin/update/${id}`, {
+      newName: newName,
+      newEmail: newEmail,
+    });
+  };
 
   return (
     <div className="user">
@@ -56,12 +66,13 @@ export default function User() {
         </div>
         <div className="userUpdate">
           <span className="userUpdateTitle">Edit</span>
-          <form className="userUpdateForm">
+          <form typeof="PUT" className="userUpdateForm">
             <div className="userUpdateLeft">
               <div className="userUpdateItem">
                 <label>Username</label>
                 <input
                   type="text"
+                  onChange={(e) => setNewEmail(e.target.value)}
                   placeholder={client.email}
                   className="userUpdateInput"
                 />
@@ -70,6 +81,7 @@ export default function User() {
                 <label>Full Name</label>
                 <input
                   type="text"
+                  onChange={(e) => setNewName(e.target.value)}
                   placeholder={client.name}
                   className="userUpdateInput"
                 />
@@ -79,7 +91,12 @@ export default function User() {
               <div className="userUpdateUpload">
                 <input type="file" id="file" style={{ display: "none" }} />
               </div>
-              <button type="submit" className="userUpdateButton">
+              <button
+                onClick={() => {
+                  updateUser(client._id);
+                }}
+                className="userUpdateButton"
+              >
                 Update
               </button>
             </div>

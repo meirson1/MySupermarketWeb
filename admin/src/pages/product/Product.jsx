@@ -17,8 +17,24 @@ export default function Product() {
     axios.get(API_URL).then((data) => setProduct(data.data));
   }, []);
 
-  console.log(product);
-  const location = useLocation();
+  const [newName, setNewName] = useState("");
+  const [newDep, setNewDep] = useState("");
+  const [newDes, setNewDes] = useState("");
+  const [newPrice, setNewPrice] = useState("");
+  const [newRating, setNewRating] = useState("");
+
+  const updateUser = async (id) => {
+    await axios.put(`http://localhost:8080/api/products/admin/update/${id}`, {
+      id: id,
+      newName: newName,
+      newDep: newDep,
+      newDes: newDes,
+      newPrice: newPrice,
+      newRating: newRating,
+    });
+  };
+
+  // const location = useLocation();
   // const productId = location.pathname.split("/")[2];
   // const [pStats, setPStats] = useState([]);
 
@@ -83,7 +99,7 @@ export default function Product() {
           </div>
           <div className="productInfoBottom">
             <div className="productInfoItem">
-              <span className="productInfoKey">id:</span>
+              <span className="productInfoKey">id:__</span>
               <span className="productInfoValue">{product._id}</span>
             </div>
             <div className="productInfoItem">
@@ -97,13 +113,35 @@ export default function Product() {
         <form className="productForm">
           <div className="productFormLeft">
             <label>Product Name</label>
-            <input type="text" placeholder={product.name} />
+            <input
+              onChange={(e) => setNewName(e.target.value)}
+              type="text"
+              placeholder={product.name}
+            />
             <label>Product Department</label>
-            <input type="text" placeholder={product.department} />
+            <input
+              onChange={(e) => setNewDep(e.target.value)}
+              type="text"
+              placeholder={product.department}
+            />
             <label>Product Description</label>
-            <input type="text" placeholder={product.description} />
+            <input
+              onChange={(e) => setNewDes(e.target.value)}
+              type="text"
+              placeholder={product.description}
+            />
             <label>Price</label>
-            <input type="text" placeholder={product.price} />
+            <input
+              onChange={(e) => setNewPrice(e.target.value)}
+              type="text"
+              placeholder={product.price}
+            />
+            <label>Rating</label>
+            <input
+              onChange={(e) => setNewRating(e.target.value)}
+              type="text"
+              placeholder={product.rating}
+            />
           </div>
           <div className="productFormRight">
             {/* <div className="productUpload">
@@ -113,7 +151,12 @@ export default function Product() {
               </label>
               <input type="file" id="file" style={{ display: "none" }} />
             </div> */}
-            <button className="productButton">Update</button>
+            <button
+              onClick={() => updateUser(product._id)}
+              className="productButton"
+            >
+              Update
+            </button>
           </div>
         </form>
       </div>

@@ -39,6 +39,11 @@ export default function ProductList() {
       width: 160,
     },
     {
+      field: "rating",
+      headerName: "Rating",
+      width: 160,
+    },
+    {
       field: "action",
       headerName: "Action",
       width: 150,

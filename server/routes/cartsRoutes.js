@@ -11,8 +11,4 @@ router.get("/admin/order", (req, res) => {
   getAllCarts(req, res);
 });
 
-router.get("/:id", (req, res) => {
-  getOrderProductById(req, res);
-});
-
 module.exports = router;
