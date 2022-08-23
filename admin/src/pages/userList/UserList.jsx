@@ -15,6 +15,7 @@ export default function UserList() {
   }, []);
 
   const handleDelete = (id) => {
+    axios.delete(`http://localhost:8080/api/clients/admin/delete/${id}`);
     setData(data.filter((item) => item._id !== id));
   };
 

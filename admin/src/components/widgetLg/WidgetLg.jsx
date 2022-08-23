@@ -8,7 +8,9 @@ export default function WidgetLg() {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    axios.get(API_URL_ORDERS).then((res) => setOrders(res.data));
+    axios
+      .get(API_URL_ORDERS)
+      .then((res) => setOrders(res.data.slice(0, res.data.length)));
   }, []);
 
   // const API_URL_CLIENTS = `http://localhost:8080/api/clients/admin/${userId}`;
@@ -26,9 +28,9 @@ export default function WidgetLg() {
   //     .then((res) => setClient(res.data.name));
   // };
 
-  const Button = ({ type }) => {
-    return <button className={"widgetLgButton " + type}>{type}</button>;
-  };
+  // const Button = ({ type }) => {
+  //   return <button className={"widgetLgButton " + type}>{type}</button>;
+  // };
   return (
     <div className="widgetLg">
       <h3 className="widgetLgTitle">Latest transactions</h3>

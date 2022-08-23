@@ -62,8 +62,22 @@ const updateProductById = async (req, res) => {
   }
 };
 
+const removeProductById = async (req, res) => {
+  try {
+    const product = await Product.findByIdAndDelete(req.params.id);
+    if (!product) {
+      res.status(200).send(product);
+      console.info({ id }, "product deleted successfully");
+    } else {
+      console.info({ id }, "product didn't deleted");
+      res.status(500).send({ message: error.message });
+    }
+  } catch (error) {}
+};
+
 module.exports = {
   getAllProducts,
   getProductById,
   updateProductById,
+  removeProductById,
 };

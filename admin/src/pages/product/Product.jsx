@@ -1,8 +1,8 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./product.css";
-import Chart from "../../components/chart/Chart";
-import { Publish } from "@mui/icons-material";
-import { useSelector } from "react-redux";
+// import Chart from "../../components/chart/Chart";
+// import { Publish } from "@mui/icons-material";
+// import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -15,7 +15,7 @@ export default function Product() {
 
   useEffect(() => {
     axios.get(API_URL).then((data) => setProduct(data.data));
-  }, []);
+  }, [product]);
 
   const [newName, setNewName] = useState("");
   const [newDep, setNewDep] = useState("");

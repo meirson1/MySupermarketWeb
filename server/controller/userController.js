@@ -139,16 +139,14 @@ const updateClientById = async (req, res) => {
 const removeClientById = async (req, res) => {
   try {
     const client = await Client.findByIdAndDelete(req.params.id);
-    if (client) {
+    if (!client) {
       res.status(200).send(client);
+      console.info({ id }, "client deleted successfully");
     } else {
-      console.info({ id }, "client does not exist");
+      console.info({ id }, "client didn't deleted");
       res.status(500).send({ message: error.message });
     }
-  } catch (error) {
-    console.error(error);
-    res.status(500).send({ message: error.message });
-  }
+  } catch (error) {}
 };
 
 module.exports = {

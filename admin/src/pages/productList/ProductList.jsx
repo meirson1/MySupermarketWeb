@@ -15,6 +15,7 @@ export default function ProductList() {
   }, []);
 
   const handleDelete = (id) => {
+    axios.delete(`http://localhost:8080/api/products/admin/delete/${id}`);
     setData(data.filter((item) => item._id !== id));
   };
 
