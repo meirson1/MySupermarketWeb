@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import MapsPage from "./Maps";
 import Weather from "../components/weather";
+import Video from "../components/Video";
 
 function HomePage() {
   const navigate = useNavigate();
@@ -21,6 +22,9 @@ function HomePage() {
         <h1>Welcome {client && client.name}</h1>
       </section>
       <MapsPage>Shops Map</MapsPage>
+      <br />
+      <Video embedId="LC_qM1P6nG4" />
+      <br />
       <Weather/>
     </>
   );

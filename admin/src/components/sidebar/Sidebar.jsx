@@ -8,6 +8,7 @@ import {
   AttachMoney,
   BarChart,
 } from "@mui/icons-material";
+import FacebookIcon from '@mui/icons-material/Facebook';
 import { Link } from "react-router-dom";
 
 export default function Sidebar() {
@@ -58,6 +59,12 @@ export default function Sidebar() {
               <BarChart className="sidebarIcon" />
               Reports
             </li>
+            <Link to="/postfb" className="link">
+              <li className="sidebarListItem">
+                <FacebookIcon className="sidebarIcon" />
+                Post in Facebook
+              </li>
+            </Link>
           </ul>
         </div>
       </div>
