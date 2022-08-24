@@ -3,7 +3,7 @@ import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 // Reducers
-import { cartReducer, getStatsReducer, getDepartmentsPieReducer, getSuggestionReducer } from "./reducers/CartReducer";
+import { cartReducer, getSuggestionReducer } from "./reducers/CartReducer";
 import authReducer from "../auth/authSlice";
 import {
   getProductsDetailsReducer,
@@ -17,8 +17,6 @@ const reducer = combineReducers({
   getProducts: getProductsReducer,
   getProductDetails: getProductsDetailsReducer,
   getLocations: getLocationsReducer,
-  getTopProducts: getStatsReducer,
-  getDepartmentsPie: getDepartmentsPieReducer,
   getSuggestion: getSuggestionReducer,
 });
 

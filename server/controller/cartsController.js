@@ -86,6 +86,9 @@ const getSuggestion = async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).send({ message: error.message });
+  }
+}
+
 const getAllCarts = async (req, res) => {
   try {
     const carts = await Cart.find({}).sort({ name: "asc" });

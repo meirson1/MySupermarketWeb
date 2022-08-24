@@ -47,44 +47,6 @@ export const sendCartDataToDB =
     };
       await axios(config);
   };
-  
-  export const getTopProducts = () => async (dispatch) => {
-    try {
-      dispatch({ type: actionTypes.GET_TOP_PRODUCTS_REQUEST });
-      const { data } = await axios.get("http://localhost:8080/api/carts/TopProducts");
-      dispatch({
-        type: actionTypes.GET_TOP_PRODUCTS_SUCCESS,
-        payload: data,
-      });
-    } catch (error) {
-      dispatch({
-        type: actionTypes.GET_TOP_PRODUCTS_FAIL,
-        payload:
-          error.response && error.response.data.message
-            ? error.response.data.message
-            : error.message,
-      });
-    }
-  };
-
-export const getDepartmentsPie = () => async (dispatch) => {
-  try {
-    dispatch({ type: actionTypes.GET_DEPARTMENTS_PIE_REQUEST });
-    const { data } = await axios.get("http://localhost:8080/api/carts/DepartmentsPie");
-    dispatch({
-      type: actionTypes.GET_DEPARTMENTS_PIE_SUCCESS,
-      payload: data,
-    });
-  } catch (error) {
-    dispatch({
-      type: actionTypes.GET_DEPARTMENTS_PIE_FAIL,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
-    });
-  }
-};
 
 export const getSuggestion= (id) => async (dispatch) => {
   try {

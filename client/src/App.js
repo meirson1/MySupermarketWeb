@@ -12,7 +12,6 @@ import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
 import CartPage from "./pages/CartPage";
 import ProductPage from "./pages/ProductPage";
-import StatsPage from "./pages/Stats";
 // import MapsPage from "./pages/Maps"
 import Shop from "./pages/Shop";
 
@@ -27,7 +26,6 @@ function App() {
             <Route exact path="/shop" element={<Shop />} />
             <Route exact path="/product/:id" element={<ProductPage />} />
             <Route exact path="/cart" element={<CartPage />} />
-            <Route exact path="/stats" element={<StatsPage/>} />
             {/* <Route exact path="/maps" element={<MapsPage />} /> */}
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />

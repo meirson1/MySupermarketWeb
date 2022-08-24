@@ -11,6 +11,7 @@ import Product from "./pages/product/Product";
 import NewProduct from "./pages/newProduct/NewProduct";
 import WidgetLg from "./components/widgetLg/WidgetLg";
 import PostFB from "./components/postfb/PostFB";
+import Stats from "./pages/stats/Stats";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/newproduct" element={<NewProduct />} />
           <Route path="/transactions" element={<WidgetLg />} />
           <Route path="/postfb" element={<PostFB />} />
+          <Route path="/stats" element={<Stats />} />
         </Routes>
       </div>
     </BrowserRouter>
