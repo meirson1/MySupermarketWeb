@@ -15,7 +15,7 @@ const ProductPage = ({ match, history }) => {
     if (product && id !== product._id) {
       dispatch(getProductDetails(id));
     }
-  }, [dispatch, product, match]);
+  }, [dispatch, product, match, id]);
 
   const addToCartHandler = () => {
     dispatch(addToCart(product._id, qty));

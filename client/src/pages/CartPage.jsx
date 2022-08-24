@@ -26,7 +26,7 @@ const CartPage = () => {
     if (cartItems === []) {
       navigate("/shop");
     }
-  }, [client, navigate, dispatch]);
+  }, [client, navigate, dispatch, cartItems]);
 
   useEffect(() => {
     if (!cartItems) {
