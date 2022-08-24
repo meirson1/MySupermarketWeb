@@ -11,8 +11,7 @@ const registerClient = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body;
 
   if (!name || !email || !password) {
-    res.status(400);
-    throw new Error("Please add all fields");
+    res.status(400).send("Please add all fields");
   }
 
   // Check if client exists
@@ -64,8 +63,7 @@ const loginClient = asyncHandler(async (req, res) => {
       token: generateToken(client._id),
     });
   } else {
-    res.status(400);
-    throw new Error("Invalid credentials");
+    res.status(400).send("Invalid credentials");
   }
 });
 

@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+
 import MapsPage from "./Maps";
 import Weather from "../components/weather";
 
@@ -13,6 +15,8 @@ function HomePage() {
   useEffect(() => {
     if (!client) {
       navigate("/login");
+    } else {
+      toast.dismiss();
     }
   }, [client, navigate, dispatch]);
   return (
@@ -21,7 +25,7 @@ function HomePage() {
         <h1>Welcome {client && client.name}</h1>
       </section>
       <MapsPage>Shops Map</MapsPage>
-      <Weather/>
+      <Weather />
     </>
   );
 }

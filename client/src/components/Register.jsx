@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 import { FaUser } from "react-icons/fa";
 import { register, reset } from "../auth/authSlice";
 import Spinner from "../components/Spinner";
@@ -25,7 +24,7 @@ function Register() {
 
   useEffect(() => {
     if (isError) {
-      toast.error(message);
+      alert(message);
     }
 
     if (isSuccess || client) {
@@ -46,7 +45,7 @@ function Register() {
     e.preventDefault();
 
     if (password !== password2) {
-      toast.error("Passwords do not match");
+      alert("Passwords do not match");
     } else {
       const clientData = {
         name,
