@@ -1,5 +1,6 @@
 const express = require("express");
 const Cart = require("../models/Cart");
+const Product = require("../models/Product");
 
 const saveCartToDB = async (req, res) => {
   try {
@@ -64,9 +65,23 @@ const getSuggestion = async (req, res) => {
       ]);
       
     if (topDepartment && topDepartment.length > 0) {
-      res.status(200).send(topDepartment);
+
+      const product = await Product.find({"department": topDepartment[0]._id}).limit(1);
+      res.status(200).send(product);
     } else {
-      res.status(200).send(["to do: Top product"]);
+      const topProduct = await Cart.aggregate([
+        {$unwind:"$products"},
+        {$group: {"_id" : "$products.name", "count": {$sum:1}}},
+        {$sort : {count: -1}},
+        {$limit: 1},
+        ]);
+       if(topProduct && topProduct.length > 0){
+        const product = await Product.find({"name": topProduct[0]._id}).limit(1);
+        res.status(200).send(product);
+       }
+       else{
+        res.status(500).send(["no suggestion"]);
+       }
     }
   } catch (error) {
     console.error(error);

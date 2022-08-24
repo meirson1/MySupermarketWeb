@@ -2,8 +2,10 @@ import "../styles/CartPage.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { getSuggestion as listSuggestion} from "../redux/actions/cartActions";
 // Componnents
 import CartItem from "../components/CartItem";
+import Product from "../components/Product";
 
 // Actions
 import {
@@ -27,6 +29,14 @@ const CartPage = () => {
       navigate("/shop");
     }
   }, [client, navigate, dispatch, cartItems]);
+
+  
+  const getSuggestion = useSelector((state) => state.getSuggestion);
+  const { suggestion } = getSuggestion;
+
+  useEffect(() => {
+    dispatch(listSuggestion(client._id));
+  }, [dispatch]);
 
   useEffect(() => {
     if (!cartItems) {
@@ -91,6 +101,29 @@ const CartPage = () => {
               Proceed To Checkout
             </button>
           </div>
+
+          <div>
+            <h3>Product Suggestion</h3>
+          {suggestion.length === 0 ? (
+            <div>
+              No Suggestion Yet
+            </div>
+          ) : (
+            suggestion.map((product) => (
+              <Product
+                key={product._id}
+                productId={product._id}
+                name={product.name}
+                price={product.price}
+                description={product.description}
+                rating={product.rating}
+                imageUrl={product.imageUrl}
+              />
+            ))
+          )}
+
+          </div>
+
         </div>
       </div>
     </>

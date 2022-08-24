@@ -76,3 +76,26 @@ export const getDepartmentsPieReducer = (state = { departmentsPie: [] }, action)
       return state;
   }
 };
+
+export const getSuggestionReducer = (state = { suggestion: [] }, action) => {
+  switch (action.type) {
+    case actionTypes.GET_SUGGEST_REQUEST:
+      return {
+        loading: true,
+        suggestion: [],
+      };
+    case actionTypes.GET_SUGGEST_SUCCESS:
+      return {
+        loading: false,
+        suggestion: action.payload,
+      };
+    case actionTypes.GET_SUGGEST_FAIL:
+      return {
+        loading: false,
+        error: action.payload,
+      };
+    default:
+      return state;
+  }
+};
+
