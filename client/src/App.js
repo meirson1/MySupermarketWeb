@@ -6,6 +6,7 @@ import { ToastContainer } from "react-toastify";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import NavBar from "./components/NavBar";
+import Footer from "./components/Footer";
 
 // Pages
 import HomePage from "./pages/HomePage";
@@ -34,6 +35,8 @@ function App() {
         </div>
       </BrowserRouter>
       <ToastContainer />
+      <br />
+      <Footer />
     </>
   );
 }

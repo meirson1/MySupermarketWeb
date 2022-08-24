@@ -1,0 +1,14 @@
+.postfb {
+    flex: 4;
+    padding: 20px;
+
+}
+
+.button {
+    border-radius: 8px;
+    font-size: 20px;
+    background-color: red;
+    color: white;
+    margin-left: 70px;
+    margin-top: 100px;
+}

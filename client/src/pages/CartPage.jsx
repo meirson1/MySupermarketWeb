@@ -16,10 +16,10 @@ import {
 
 const CartPage = () => {
   const dispatch = useDispatch();
+  const { client } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
-  const { client } = useSelector((state) => state.auth);
 
   useEffect(() => {
     if (!client) {
@@ -45,7 +45,7 @@ const CartPage = () => {
   }, [cartItems, navigate, dispatch]);
 
   const qtyChangeHandler = (id, qty) => {
-    dispatch(addToCart(id, qty));
+    dispatch(addToCart(client.id, id, qty));
   };
 
   const removeFromCartHandler = (id) => {

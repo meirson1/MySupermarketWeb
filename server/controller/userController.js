@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const asyncHandler = require("express-async-handler");
+const express = require("express");
 const Client = require("../models/Client");
 
 // @desc    Register new client
@@ -82,8 +83,78 @@ const generateToken = (id) => {
   });
 };
 
+const getAllClients = async (req, res) => {
+  try {
+    const clients = await Client.find({}).sort({ name: "asc" });
+    if (clients) {
+      res.status(200).send(clients);
+      console.log(clients.length, "clients from DB");
+    } else {
+      res
+        .status(404)
+        .send({ code: 404, message: `There is an error with your clients` });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ message: error.message });
+  }
+};
+
+const getClientById = async (req, res) => {
+  try {
+    const client = await Client.findById(req.params.id);
+    if (client) {
+      res.status(200).send(client);
+    } else {
+      console.info({ id }, "client does not exist");
+      res.status(500).send({ message: error.message });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ message: error.message });
+  }
+};
+
+const updateClientById = async (req, res) => {
+  const newName = req.body.newName;
+  const newEmail = req.body.newEmail;
+
+  try {
+    const client = await Client.findById(req.params.id);
+    if (client) {
+      client.name = newName;
+      client.email = newEmail;
+      client.save();
+      res.status(200).send("client updated successfully");
+    } else {
+      console.info({ id }, "client does not exist");
+      res.status(500).send({ message: error.message });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ message: error.message });
+  }
+};
+
+const removeClientById = async (req, res) => {
+  try {
+    const client = await Client.findByIdAndDelete(req.params.id);
+    if (!client) {
+      res.status(200).send(client);
+      console.info({ id }, "client deleted successfully");
+    } else {
+      console.info({ id }, "client didn't deleted");
+      res.status(500).send({ message: error.message });
+    }
+  } catch (error) {}
+};
+
 module.exports = {
   registerClient,
   loginClient,
   getMe,
+  getAllClients,
+  getClientById,
+  updateClientById,
+  removeClientById,
 };
