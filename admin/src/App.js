@@ -10,6 +10,7 @@ import ProductList from "./pages/productList/ProductList";
 import Product from "./pages/product/Product";
 import NewProduct from "./pages/newProduct/NewProduct";
 import WidgetLg from "./components/widgetLg/WidgetLg";
+import PostFB from "./components/postfb/PostFB";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/product/:productId" element={<Product />} />
           <Route path="/newproduct" element={<NewProduct />} />
           <Route path="/transactions" element={<WidgetLg />} />
+          <Route path="/postfb" element={<PostFB />} />
         </Routes>
       </div>
     </BrowserRouter>
