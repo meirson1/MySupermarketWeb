@@ -10,8 +10,10 @@ import {
 
 function Footer() {
   return (
-    <section className="footer position-bottom height-50px
-    margin-bottom: -50px" >
+    <section
+      className="footer position-bottom height-50px
+    margin-bottom: -50px"
+    >
       <section className="footer-info">
         <section className="footer-info-left">
           <h6 className="text-uppercase fw-bold mb-4">ABOUT US</h6>

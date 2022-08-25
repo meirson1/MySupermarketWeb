@@ -19,8 +19,9 @@ function Map() {
   };
 
   const mapStyles = {
-    height: "40vh",
-    width: "40%",
+    // height: "40vh",
+    // width: "40%",
+    gridArea: "map",
   };
 
   const defaultCenter = {

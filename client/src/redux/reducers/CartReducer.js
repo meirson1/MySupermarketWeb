@@ -54,4 +54,3 @@ export const getSuggestionReducer = (state = { suggestion: [] }, action) => {
       return state;
   }
 };
-

@@ -48,11 +48,13 @@ export const sendCartDataToDB =
     await axios(config);
   };
 
-export const getSuggestion= (id) => async (dispatch) => {
+export const getSuggestion = (id) => async (dispatch) => {
   try {
     console.log(id);
-    dispatch({ type: actionTypes.GET_SUGGEST_REQUEST});
-    const { data } = await axios.get(`http://localhost:8080/api/carts/Suggestion/${id}`);
+    dispatch({ type: actionTypes.GET_SUGGEST_REQUEST });
+    const { data } = await axios.get(
+      `http://localhost:8080/api/carts/Suggestion/${id}`
+    );
     dispatch({
       type: actionTypes.GET_SUGGEST_SUCCESS,
       payload: data,
@@ -67,4 +69,3 @@ export const getSuggestion= (id) => async (dispatch) => {
     });
   }
 };
-  
