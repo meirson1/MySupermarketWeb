@@ -8,6 +8,7 @@
   /* height: 200px; */
   background-color: rgb(49, 45, 45);
   color: white;
+  
 }
 
 .footer-social-media {
@@ -27,6 +28,9 @@
   display: flex;
   justify-content: center;
   padding-block-start: 40px;
+  
+
+  column-count: 3;
 }
 
 .footer-info-left, .footer-info-center, .footer-info-right {
@@ -72,4 +76,9 @@
   font-family: RobotoBold;
   font-size: large;
   margin: 0px 20px;
+}
+
+#multicol{
+  column-count: 3;
+  column-width: 7091px;
 }

@@ -14,7 +14,9 @@ function Footer() {
       className="footer position-bottom height-50px
     margin-bottom: -50px"
     >
+      <div id="multicol">
       <section className="footer-info">
+        <div>
         <section className="footer-info-left">
           <h6 className="text-uppercase fw-bold mb-4">ABOUT US</h6>
           MySupermarket is a new company that came to help consumer easy buy.
@@ -23,7 +25,9 @@ function Footer() {
           <br />
           And now lets do shooping !!
         </section>
+        </div>
 
+        <div>
         <section className="footer-info-center">
           <div className="me-5 d-none d-lg-block">
             <span>Get connected with us on Facebook:</span>
@@ -36,7 +40,9 @@ function Footer() {
             </a>
           </div>
         </section>
+        </div>
 
+        <div>
         <section className="footer-info-right">
           <h6 className="text-uppercase fw-bold mb-4">Contact</h6>
           <p>
@@ -52,8 +58,10 @@ function Footer() {
             <AiFillPrinter /> + 972 03-9634857
           </p>
         </section>
+        </div>
       </section>
       <hr className="footer-seperator" />
+      </div>
     </section>
   );
 }
