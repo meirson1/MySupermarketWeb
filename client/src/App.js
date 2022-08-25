@@ -15,6 +15,7 @@ import ProductPage from "./pages/ProductPage";
 // import MapsPage from "./pages/Maps"
 import Shop from "./pages/Shop";
 import Chat from "./components/chat";
+import PageNotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
             <Route exact path="/chat" element={<Chat />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="*" element={<PageNotFound />} />
           </Routes>
         </div>
       </BrowserRouter>

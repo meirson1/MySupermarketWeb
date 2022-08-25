@@ -1,31 +1,20 @@
 import React from "react";
-//import pagenotfound image
 import pagenotfoundImage from "../assets/pagenotfound.jpg";
 //react router dom
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Link,
-  Redirect,
-} from "react-router-dom";
+import { FaExclamationTriangle } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const PageNotFound = () => {
   return (
-    <Router>
-      <Switch>
-        <div className="pageNotFound">
-          <h1>Oops..! 404 Page Not Found</h1>
-          <p>Looks like you came to wrong page on our server</p>
-          <img
-            src={pagenotfoundImage}
-            height="500"
-            width="500"
-            alt="not found"
-          />
-        </div>
-      </Switch>
-    </Router>
+    <div className="d-flex flex-column justify-content-center align-items-center mt-5">
+      <FaExclamationTriangle className="text-danger" size="5em" />
+      <h1>404</h1>
+      <p className="lead">Sorry, thie page does not exist</p>
+      <img src={pagenotfoundImage} height="500" width="500" alt="not found" />
+      <Link to="/" className="btn btn-primary">
+        Go Back
+      </Link>
+    </div>
   );
 };
 

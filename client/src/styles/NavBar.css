@@ -7,6 +7,11 @@
   z-index: 50;
 }
 
+.navbar__logo{
+  display: "flex";
+  flex-direction: "row";
+}
+
 .navbar__logo h2 {
   color: #f4f4f4;
   font-size: 2rem;

@@ -4,6 +4,7 @@ import ChatIcon from "@mui/icons-material/Chat";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../auth/authSlice";
+import logo from "../assets/logo.jpg";
 
 const NavBar = () => {
   const navigate = useNavigate();
@@ -27,6 +28,7 @@ const NavBar = () => {
       {/* logo */}
       <div className="navbar__logo">
         <Link style={{ textDecoration: "none" }} to="/">
+          <img src={logo} style={{ height: "5vh" }} />
           <h2>My Supermarket</h2>
         </Link>
       </div>
