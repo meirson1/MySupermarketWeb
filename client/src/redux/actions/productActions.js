@@ -1,10 +1,12 @@
 import * as actionTypes from "../constants/productCons";
 import axios from "axios";
 
-export const getProducts = () => async (dispatch) => {
+export const getProducts = (search, department) => async (dispatch) => {
   try {
     dispatch({ type: actionTypes.GET_PRODUCTS_REQUEST });
-    const { data } = await axios.get("http://localhost:8080/api/products");
+    const { data } = await axios.get(
+      `http://localhost:8080/api/products?search=${search}&department=${department}`
+    );
     dispatch({
       type: actionTypes.GET_PRODUCTS_SUCCESS,
       payload: data,
