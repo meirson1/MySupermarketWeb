@@ -1,9 +1,10 @@
+import "../styles/HomePage.css"
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 
-import MapsPage from "./Maps";
+import Maps from "./Maps";
 import Weather from "../components/weather";
 import Video from "../components/Video";
 
@@ -23,9 +24,10 @@ function HomePage() {
 
   return (
     <>
-      <section className="heading">
+    <div className="Home__warpper">
+      <div className="heading">
         <br />
-        <div
+        <div 
           style={{
             display: "flex",
             justifyContent: "center",
@@ -34,14 +36,15 @@ function HomePage() {
         >
           <h1>Welcome {client && client.name}</h1>
         </div>
-      </section>
+        </div>
       <br />
       <Video embedId="LC_qM1P6nG4" />
       <br />
       <div style={{ display: "flex", flexdirection: "row" }}>
-        <MapsPage />
-        <Weather />
+        <Maps className="Home__map" />
+        <Weather className="Home__weather" />
       </div>
+       </div>
     </>
   );
 }

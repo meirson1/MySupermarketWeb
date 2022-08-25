@@ -3,6 +3,7 @@
     flex-direction: column;
     margin-bottom: 50px;
     font-weight: bold;
+    grid-column: grid;
     width:100%;
     height: 200px;
     background-color: rgb(49, 45, 45);
