@@ -15,11 +15,6 @@ const ClientSchema = new mongoose.Schema(
       type: String,
       required: [true, "Please add a password"],
     },
-    // cart: {
-    //   type: String,
-    //   required: true,
-    //   ref: "Cart",
-    // },
   },
   {
     timestamps: true,

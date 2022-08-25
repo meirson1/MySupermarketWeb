@@ -21,11 +21,11 @@ const saveCartToDB = async (req, res) => {
 const getTopProducts = async (req, res) => {
   try {
     const topProducts = await Cart.aggregate([
-      {$unwind:"$products"},
-      {$group: {"_id" : "$products.name", "count": {$sum:1}}},
-      {$sort : {count: -1}},
-      {$limit: 10},
-      ]);
+      { $unwind: "$products" },
+      { $group: { _id: "$products.name", count: { $sum: 1 } } },
+      { $sort: { count: -1 } },
+      { $limit: 10 },
+    ]);
     if (topProducts) {
       res.status(200).send(JSON.stringify(topProducts));
     }
@@ -37,12 +37,19 @@ const getTopProducts = async (req, res) => {
 const getDepartmentsPie = async (req, res) => {
   try {
     const departmentsPie = await Cart.aggregate([
-      {$unwind:"$products"},
-      {$group: {"_id" : "$products.name", "count": {$sum:1}}},
-      {$lookup: {"from": "products", "localField": "_id", "foreignField": "name", "as": "Product"}},
-      {$unwind:"$Product"},
-      {$group: {"_id" : "$Product.department", "sum": {$sum:"$count"}}},
-      ]);
+      { $unwind: "$products" },
+      { $group: { _id: "$products.name", count: { $sum: 1 } } },
+      {
+        $lookup: {
+          from: "products",
+          localField: "_id",
+          foreignField: "name",
+          as: "Product",
+        },
+      },
+      { $unwind: "$Product" },
+      { $group: { _id: "$Product.department", sum: { $sum: "$count" } } },
+    ]);
     if (departmentsPie) {
       res.status(200).send(JSON.stringify(departmentsPie));
     }
@@ -54,40 +61,49 @@ const getDepartmentsPie = async (req, res) => {
 const getSuggestion = async (req, res) => {
   try {
     const topDepartment = await Cart.aggregate([
-      {$match: {"userId": req.params.id}},
-      {$unwind:"$products"},
-      {$group: {"_id" : "$products.name", "count": {$sum:1}}},
-      {$lookup: {"from": "products", "localField": "_id", "foreignField": "name", "as": "Product"}},
-      {$unwind:"$Product"},
-      {$group: {"_id" : "$Product.department", "sum": {$sum:"$count"}}},
-      {$sort : {sum: -1}},
-      {$limit: 1},
-      ]);
-      
-    if (topDepartment && topDepartment.length > 0) {
+      { $match: { userId: req.params.id } },
+      { $unwind: "$products" },
+      { $group: { _id: "$products.name", count: { $sum: 1 } } },
+      {
+        $lookup: {
+          from: "products",
+          localField: "_id",
+          foreignField: "name",
+          as: "Product",
+        },
+      },
+      { $unwind: "$Product" },
+      { $group: { _id: "$Product.department", sum: { $sum: "$count" } } },
+      { $sort: { sum: -1 } },
+      { $limit: 1 },
+    ]);
 
-      const product = await Product.find({"department": topDepartment[0]._id}).limit(1);
+    if (topDepartment && topDepartment.length > 0) {
+      const product = await Product.find({
+        department: topDepartment[0]._id,
+      }).limit(1);
       res.status(200).send(product);
     } else {
       const topProduct = await Cart.aggregate([
-        {$unwind:"$products"},
-        {$group: {"_id" : "$products.name", "count": {$sum:1}}},
-        {$sort : {count: -1}},
-        {$limit: 1},
-        ]);
-       if(topProduct && topProduct.length > 0){
-        const product = await Product.find({"name": topProduct[0]._id}).limit(1);
+        { $unwind: "$products" },
+        { $group: { _id: "$products.name", count: { $sum: 1 } } },
+        { $sort: { count: -1 } },
+        { $limit: 1 },
+      ]);
+      if (topProduct && topProduct.length > 0) {
+        const product = await Product.find({ name: topProduct[0]._id }).limit(
+          1
+        );
         res.status(200).send(product);
-       }
-       else{
+      } else {
         res.status(500).send(["no suggestion"]);
-       }
+      }
     }
   } catch (error) {
     console.error(error);
     res.status(500).send({ message: error.message });
   }
-}
+};
 
 const getAllCarts = async (req, res) => {
   try {

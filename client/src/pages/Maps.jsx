@@ -1,55 +1,38 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { GoogleMap, MarkerF, InfoWindow } from "@react-google-maps/api";
-import { getLocations as listLocations } from "../redux/actions/locationActions";
+import { LoadScript } from "@react-google-maps/api";
 
-function Map() {
-  const dispatch = useDispatch();
-  const getLocations = useSelector((state) => state.getLocations);
-  const { locations } = getLocations;
+// Componnents
+import Map from "../components/Map";
 
-  useEffect(() => {
-    dispatch(listLocations());
-  }, [dispatch]);
+class LoadScriptOnlyIfNeeded extends LoadScript {
+  componentDidMount() {
+    const cleaningUp = true;
+    const isBrowser = typeof document !== "undefined"; // require('@react-google-maps/api/src/utils/isbrowser')
+    const isAlreadyLoaded =
+      window.google &&
+      window.google.maps &&
+      document.querySelector("body.first-hit-completed"); // AJAX page loading system is adding this class the first time the app is loaded
+    if (!isAlreadyLoaded && isBrowser) {
+      // @ts-ignore
+      if (window.google && !cleaningUp) {
+        console.error("google api is already presented");
+        return;
+      }
 
-  const [selected, setSelected] = useState({});
+      this.isCleaningUp().then(this.injectScript);
+    }
 
-  const onSelect = (item) => {
-    setSelected(item);
-  };
-
-  const mapStyles = {
-    // height: "40vh",
-    // width: "40%",
-    gridArea: "map",
-  };
-
-  const defaultCenter = {
-    lat: 32.07018929655174,
-    lng: 34.794164715631155,
-  };
-
-  return (
-    <GoogleMap mapContainerStyle={mapStyles} zoom={15} center={defaultCenter}>
-      {locations.map((item) => (
-        <MarkerF
-          key={item.name}
-          position={{ lat: item.lat, lng: item.lng }}
-          onClick={() => onSelect(item)}
-          icon="https://img.icons8.com/color/48/000000/shopping-cart-loaded.png"
-        ></MarkerF>
-      ))}
-      {selected.lat && selected.lng && (
-        <InfoWindow
-          position={{ lat: selected.lat, lng: selected.lng }}
-          clickable={true}
-          onCloseClick={() => setSelected({})}
-        >
-          <p>{selected.name}</p>
-        </InfoWindow>
-      )}
-    </GoogleMap>
-  );
+    if (isAlreadyLoaded) {
+      this.setState({ loaded: true });
+    }
+  }
 }
 
-export default Map;
+const Maps = () => {
+  return (
+    <LoadScriptOnlyIfNeeded googleMapsApiKey="AIzaSyCbS0WcrG3esjA5jBtqs_N1Ll3bGkm4Z5k">
+      <Map />
+    </LoadScriptOnlyIfNeeded>
+  );
+};
+
+export default Maps;

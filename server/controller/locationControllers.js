@@ -18,7 +18,6 @@ const getAllLocations = async (req, res) => {
   }
 };
 
-
 module.exports = {
   getAllLocations,
 };
