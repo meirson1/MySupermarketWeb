@@ -5,7 +5,7 @@ const CartItem = ({ item, qtyChangeHandler, removeHandler }) => {
       <div className="cartitem__image">
         <img src={item.imageUrl} alt={item.name} />
       </div>
-        <p className="cartitem__name">{item.name}</p>
+      <p className="cartitem__name">{item.name}</p>
       <p className="cartitem__price">${item.price.toFixed(2)}</p>
       <select
         value={item.qty}

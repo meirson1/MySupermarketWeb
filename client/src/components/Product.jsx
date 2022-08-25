@@ -8,7 +8,7 @@ const Product = ({ imageUrl, name, price, description, rating, productId }) => {
       <div className="product__info">
         <p className="info__name">{name}</p>
         <p className="info__description">{description.substring(0, 100)}...</p>
-        <p className="info__rating">{rating} stars</p>
+        <p className="info__rating">{rating} Stars</p>
         <p className="info__price">${price.toFixed(2)}</p>
         <Link to={`/product/${productId}`} className="info__button">
           View

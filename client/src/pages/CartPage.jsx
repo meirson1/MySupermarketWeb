@@ -35,7 +35,7 @@ const CartPage = () => {
   }, [cartItems, navigate, dispatch]);
 
   const qtyChangeHandler = (id, qty) => {
-    dispatch(addToCart(client.id, id, qty));
+    dispatch(addToCart(id, qty));
   };
 
   const removeFromCartHandler = (id) => {
