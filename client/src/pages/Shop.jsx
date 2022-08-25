@@ -2,6 +2,7 @@ import "../styles/Shop.css";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Select from "react-select";
+import SearchIcon from "@mui/icons-material/Search";
 // Components
 import Product from "../components/Product";
 // Actions
@@ -59,6 +60,7 @@ export default function Shop() {
             onChange={handleChange}
             value={query}
           />
+          <SearchIcon />
           <button
             defaultValue
             className="homepage__clearbutton"

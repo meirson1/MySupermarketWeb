@@ -4,12 +4,13 @@ import {
   MailOutline,
   PermIdentity,
 } from "@mui/icons-material";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./user.css";
 
 export default function User() {
+  const navigate = useNavigate();
   const { userId } = useParams();
   const API_URL = `http://localhost:8080/api/clients/admin/${userId}`;
   const [client, setClient] = useState([]);
@@ -26,6 +27,7 @@ export default function User() {
       newName: newName,
       newEmail: newEmail,
     });
+    navigate("/users");
   };
 
   return (

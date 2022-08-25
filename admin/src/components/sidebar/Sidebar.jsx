@@ -25,15 +25,11 @@ export default function Sidebar() {
               </li>
             </Link>
             <Link to="/stats" className="link">
-            <li className="sidebarListItem">
-              <Timeline className="sidebarIcon" />
-              Analytics
-            </li>
+              <li className="sidebarListItem">
+                <Timeline className="sidebarIcon" />
+                Analytics
+              </li>
             </Link>
-            <li className="sidebarListItem">
-              <TrendingUp className="sidebarIcon" />
-              Sales
-            </li>
           </ul>
         </div>
         <div className="sidebarMenu">
@@ -57,10 +53,6 @@ export default function Sidebar() {
                 Transactions
               </li>
             </Link>
-            <li className="sidebarListItem">
-              <BarChart className="sidebarIcon" />
-              Reports
-            </li>
             <Link to="/postfb" className="link">
               <li className="sidebarListItem">
                 <FacebookIcon className="sidebarIcon" />

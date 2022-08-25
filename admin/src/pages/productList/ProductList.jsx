@@ -3,6 +3,8 @@ import { DataGrid } from "@mui/x-data-grid";
 import { DeleteOutline } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { useEffect, useState, useMemo } from "react";
+import SearchIcon from "@mui/icons-material/Search";
+
 import axios from "axios";
 
 const API_URL = "http://localhost:8080/api/products?search=&department=all";
@@ -79,14 +81,60 @@ export default function ProductList() {
     [data]
   );
 
+  const [query, setQuery] = useState("");
+  const [selected, setSelected] = useState({
+    value: "all",
+    label: "All Depertments",
+  });
+
+  const searchQuery = (q, d) => {
+    axios
+      .get(`http://localhost:8080/api/products?search=${q}&department=${d}`)
+      .then((data) => setData(data.data));
+  };
+
+  const clearQuery = () => {
+    axios.get(API_URL).then((data) => setData(data.data));
+  };
+
+  const handleChange = (searchEvent) => {
+    setQuery(searchEvent.target.value);
+    searchQuery(searchEvent.target.value, selected.value);
+  };
+
+  const handleClick = async () => {
+    setQuery("");
+    clearQuery();
+  };
+
   return (
-    <div className="productList">
-      <DataGrid
-        rows={rows}
-        columns={columns}
-        pageSize={15}
-        rowsPerPageOptions={[data.length]}
-      />
-    </div>
+    <>
+      <div className="productList">
+        <SearchIcon style={{ fontSize: "medium" }} />
+        <input
+          className="homepage__search"
+          placeholder=" Search By Name..."
+          onChange={handleChange}
+          value={query}
+        />
+        <button
+          defaultValue
+          className="homepage__clearbutton"
+          disabled={query.length === 0 && selected.value === "all"}
+          onClick={() => {
+            setSelected({ value: "all", label: "All Depertments" });
+            handleClick();
+          }}
+        >
+          Clear
+        </button>
+        <DataGrid
+          rows={rows}
+          columns={columns}
+          pageSize={15}
+          rowsPerPageOptions={[data.length]}
+        />
+      </div>
+    </>
   );
 }

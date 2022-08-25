@@ -1,14 +1,11 @@
-import { Link } from "react-router-dom";
 import "./product.css";
-// import Chart from "../../components/chart/Chart";
-// import { Publish } from "@mui/icons-material";
-// import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-// import { userRequest } from "../../requestMethods";
 
 export default function Product() {
+  const navigate = useNavigate();
+
   const { productId } = useParams();
   const API_URL = `http://localhost:8080/api/products/${productId}`;
   const [product, setProduct] = useState([]);
@@ -32,53 +29,8 @@ export default function Product() {
       newPrice: newPrice,
       newRating: newRating,
     });
+    navigate("/products");
   };
-
-  // const location = useLocation();
-  // const productId = location.pathname.split("/")[2];
-  // const [pStats, setPStats] = useState([]);
-
-  // const product = useSelector((state) =>
-  //   state.product.products.find((product) => product._id === productId)
-  // );
-
-  // const MONTHS = useMemo(
-  //   () => [
-  //     "Jan",
-  //     "Feb",
-  //     "Mar",
-  //     "Apr",
-  //     "May",
-  //     "Jun",
-  //     "Jul",
-  //     "Agu",
-  //     "Sep",
-  //     "Oct",
-  //     "Nov",
-  //     "Dec",
-  //   ],
-  //   []
-  // );
-
-  // useEffect(() => {
-  //   const getStats = async () => {
-  //     try {
-  //       const res = 0; //= await get("orders/income?pid=" + productId);
-  //       const list = res.data.sort((a, b) => {
-  //         return a._id - b._id;
-  //       });
-  //       list.map((item) =>
-  //         setPStats((prev) => [
-  //           ...prev,
-  //           { name: MONTHS[item._id - 1], Sales: item.total },
-  //         ])
-  //       );
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   };
-  //   getStats();
-  // }, [productId, MONTHS]);
 
   return (
     <div className="product">
@@ -89,9 +41,7 @@ export default function Product() {
         </Link>
       </div>
       <div className="productTop">
-        <div className="productTopLeft">
-          {/* <Chart data={pStats} dataKey="Sales" title="Sales Performance" /> */}
-        </div>
+        <div className="productTopLeft"></div>
         <div className="productTopRight">
           <div className="productInfoTop">
             <img src={product.imageUrl} alt="" className="productInfoImg" />
@@ -144,13 +94,6 @@ export default function Product() {
             />
           </div>
           <div className="productFormRight">
-            {/* <div className="productUpload">
-              <img src={product.imageUrl} alt="" className="productUploadImg" />
-              <label for="file">
-                <Publish />
-              </label>
-              <input type="file" id="file" style={{ display: "none" }} />
-            </div> */}
             <button
               onClick={() => updateUser(product._id)}
               className="productButton"
