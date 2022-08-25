@@ -20,7 +20,7 @@ const products = [
   {
     name: "Asparagus",
     department: "vegetable",
-    description: "Frsh Asparagus Bouquet",
+    description: "Fresh Asparagus Bouquet",
     imageUrl:
       "https://shop.wegmans.com/cdn-cgi/image/f=auto,q=80,dpr=1,h=200,w=200/https://d2d8wwwkmhfcva.cloudfront.net/800x/filters:fill(FFF,true):format(jpg)/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_20887534-3a68-4076-b539-4bac054fa709.jpg",
     price: 5.24,
@@ -29,7 +29,7 @@ const products = [
   {
     name: "Banana",
     department: "fruit",
-    description: "Fersh banana (each).",
+    description: "Fresh banana (each).",
     imageUrl:
       "https://shop.wegmans.com/cdn-cgi/image/f=auto,q=80,dpr=1,h=200,w=200/https://d2d8wwwkmhfcva.cloudfront.net/800x/filters:fill(FFF,true):format(jpg)/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_47b1aa15-ba01-41a5-bfb6-fa21ac15ca64.jpg",
     price: 0.12,
@@ -109,7 +109,7 @@ const products = [
   },
   {
     name: "Portabello mushrooms",
-    department: "bakery",
+    department: "vegetable",
     description: "Fresh portabello mushrooms (0.5kg package)",
     imageUrl:
       "https://shop.wegmans.com/cdn-cgi/image/f=auto,q=80,dpr=1,h=200,w=200/https://d2d8wwwkmhfcva.cloudfront.net/800x/filters:fill(FFF,true):format(jpg)/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_ac02ebf6-742a-4950-96f7-bb59295031c5.jpg",
