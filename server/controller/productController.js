@@ -3,7 +3,15 @@ const Product = require("../models/Product");
 
 const getAllProducts = async (req, res) => {
   try {
-    const products = await Product.find({}).sort({ name: "asc" });
+    const { search, department } = req.query;
+    const departmentQuery =
+      department == "all" ? {} : { department: { $eq: department } };
+    var products = await Product.find(departmentQuery).sort({ name: "asc" });
+    if (search && search !== "undefined") {
+      products = products.filter((p) => {
+        return p.name.toLowerCase().match(search.toLowerCase());
+      });
+    }
     if (products) {
       res.status(200).send(products);
       console.log(products.length, "Products from DB");
