@@ -3,14 +3,14 @@ import { render } from "react-dom";
 import axios from "axios";
 import "./postfb.css";
 
-function ReactFBPageRandomQuote() {
+const PostOnFB = () =>{
   const [data, setData] = useState("");
 
   function getData(val) {
     setData(val.target.value);
   }
 
-  const postRandomQuote = () => {
+  const Post = () => {
     axios
       .post("https://graph.facebook.com/109443241883186/feed?", {
         message: data,
@@ -30,22 +30,22 @@ function ReactFBPageRandomQuote() {
   };
 
   return (
-    <div>
+    <div className="page">
       <br />
-      <h1 className="text-fw-bold mb-4">
+      <div className="p_text">
         This is your place to post specials and updates !!
-      </h1>
+      </div>
       <br />
       <br />
-      <input type="text" onChange={getData} />
+      <input type="text" className="text_box" onChange={getData} />
       <br />
       <br />
       <br />
-      <button onClick={() => postRandomQuote()}>Post Status</button>
+      <button onClick={() => Post()} className="post_button">Post Status</button>
     </div>
   );
 }
 
-render(<ReactFBPageRandomQuote />, document.querySelector("#root"));
+render(<PostOnFB />, document.querySelector("#root"));
 
-export default ReactFBPageRandomQuote;
+export default PostOnFB;

@@ -1,14 +1,31 @@
-.postfb {
+.page {
     flex: 4;
     padding: 20px;
-
+    background-color: rgb(196, 209, 239);
 }
 
-.button {
-    border-radius: 8px;
+
+.text_box{
+    margin-left: 300px;
+    padding: 15px;
+    width: 200px;
+    
+}
+
+.p_text {
+    margin-left: 200px;
+    flex: 4;
+    padding: 20px;
+    font-family: "RobotoLight";
+    font-size: x-large;
+}
+
+
+.post_button {
+    border-radius: 70px;
     font-size: 20px;
-    background-color: red;
+    background-color: rgb(52, 98, 176);
     color: white;
-    margin-left: 70px;
-    margin-top: 100px;
+    margin-left: 350px;
+    margin-top: 5px;
 }
