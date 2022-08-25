@@ -1,74 +1,75 @@
 .footer {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 50px;
-    font-weight: bold;
-    grid-column: grid;
-    width:100%;
-    height: 200px;
-    background-color: rgb(49, 45, 45);
-    color: white;
-  }
+  display: flex;
+  flex-direction: column;
+  /* margin-bottom: 50px; */
+  font-weight: bold;
+  grid-column: grid;
+  width:100%;
+  /* height: 200px; */
+  background-color: rgb(49, 45, 45);
+  color: white;
+}
 
-  .footer-social-media {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-bottom: 20px;
-  }
-  
-  .footer-social-media__icon {
-    margin: 0px 4px;
-    width: 25px;
-    height: 25px;
-  }
-  
-  .footer-info  {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .footer-info-left, .footer-info-center, .footer-info-right {
-    font-size: large;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 30px;
-    width: 30%;
-  }
-  
-  .footer-info__name, .footer-info__email, .footer-info__number {
-    margin-bottom: 10px;
-  }
-  
-  .footer-info__name, .footer-info__returns {
-    text-align: start;
-  }
-  
-  .footer-info__email, .footer-info__terms {
-    text-align: center;
-  }
-  
-  .footer-info__number, .footer-info__contact {
-    text-align: end;
-  }
+.footer-social-media {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 20px;
+}
 
-  
-  .footer-seperator {
-    flex-grow: 1;
-    border: none;
-    height: 0px;
-    background-color: rgb(49, 45, 45);
-    width: 100%;
-  }
-  
-  .footer-name {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .footer-bottom__name {
-    text-transform: uppercase;
-    font-family: RobotoBold;
-    font-size: large;
-    margin: 0px 20px;
-  }
+.footer-social-media__icon {
+  margin: 0px 4px;
+  width: 25px;
+  height: 25px;
+}
+
+.footer-info  {
+  display: flex;
+  justify-content: center;
+  padding-block-start: 40px;
+}
+
+.footer-info-left, .footer-info-center, .footer-info-right {
+  font-size: large;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+  width: 30%;
+}
+
+.footer-info_name, .footer-infoemail, .footer-info_number {
+  margin-bottom: 10px;
+}
+
+.footer-info_name, .footer-info_returns {
+  text-align: start;
+}
+
+.footer-info_email, .footer-info_terms {
+  text-align: center;
+}
+
+.footer-info_number, .footer-info_contact {
+  text-align: end;
+}
+
+
+.footer-seperator {
+  flex-grow: 1;
+  border: none;
+  height: 0px;
+  background-color: rgb(49, 45, 45);
+  width: 100%;
+}
+
+.footer-name {
+  display: flex;
+  justify-content: center;
+}
+
+.footer-bottom__name {
+  text-transform: uppercase;
+  font-family: RobotoBold;
+  font-size: large;
+  margin: 0px 20px;
+}

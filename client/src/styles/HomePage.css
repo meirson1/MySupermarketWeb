@@ -1,3 +1,18 @@
+.Home__warpper{
+  display: grid;
+  grid-template-areas:
+  "heading heading"
+  "video video"
+  "map weather";
+grid-template-columns: 1fr 3fr;
+grid-template-rows: min-content auto auto;
+gap: 30px;
+}
+
+.heading{
+  grid-area: heading;
+}
+
 .homepage {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   max-width: 1300px;

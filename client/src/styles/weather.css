@@ -23,11 +23,12 @@
 }
 
 .weather {
-  width: 80%;
+  /* width: 80%; */
   height: 50vh;
   position: relative;
   background-color: rgba(0,0,0,0.4);
   color: #fff;
+  grid-area: weather;
 }
 
 .weather:before {
