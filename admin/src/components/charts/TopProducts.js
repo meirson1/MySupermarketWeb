@@ -2,9 +2,7 @@ import { useEffect, useState } from "react";
 import c3 from "c3";
 import axios from "axios";
 
-
 export const TopProductsChart = () => {
-
   const API_URL = "http://localhost:8080/api/carts/TopProducts";
 
   const [data, setData] = useState([]);
@@ -16,14 +14,21 @@ export const TopProductsChart = () => {
   useEffect(() => {
     c3.generate({
       bindto: "#chartProducts",
+      legend: {
+        show: true,
+      },
+      axis: {
+        x: {
+          type: "category",
+          categories: [""],
+        },
+      },
       data: {
-        columns: data.map(item => [item._id, item.count]),
+        columns: data.map((item) => [item._id, item.count]),
         type: "bar",
       },
     });
   }, [data[0]]);
 
-  return <div id="chartProducts">
-    </div>;
-    
+  return <div id="chartProducts"></div>;
 };
