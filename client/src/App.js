@@ -14,6 +14,7 @@ import CartPage from "./pages/CartPage";
 import ProductPage from "./pages/ProductPage";
 // import MapsPage from "./pages/Maps"
 import Shop from "./pages/Shop";
+import Chat from "./components/chat";
 
 function App() {
   return (
@@ -26,7 +27,7 @@ function App() {
             <Route exact path="/shop" element={<Shop />} />
             <Route exact path="/product/:id" element={<ProductPage />} />
             <Route exact path="/cart" element={<CartPage />} />
-            {/* <Route exact path="/maps" element={<MapsPage />} /> */}
+            <Route exact path="/chat" element={<Chat />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
           </Routes>

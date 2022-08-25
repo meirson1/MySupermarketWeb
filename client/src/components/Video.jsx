@@ -17,7 +17,7 @@ const video = ({ embedId }) => (
 );
 
 video.propTypes = {
-  embedId: PropTypes.string.isRequired
+  embedId: PropTypes.string.isRequired,
 };
 
 export default video;

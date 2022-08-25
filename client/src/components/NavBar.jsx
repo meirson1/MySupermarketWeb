@@ -1,5 +1,6 @@
 import "../styles/NavBar.css";
 import { FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa";
+import ChatIcon from "@mui/icons-material/Chat";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../auth/authSlice";
@@ -46,6 +47,12 @@ const NavBar = () => {
               <Link to="/shop">Shop</Link>
             </li>
             <li>
+              <Link to="/chat">
+                {" "}
+                <ChatIcon /> chat
+              </Link>
+            </li>
+            <li>
               <button className="btn btn-primary" onClick={onLogout}>
                 <FaSignOutAlt /> Logout
               </button>
@@ -55,12 +62,14 @@ const NavBar = () => {
           <>
             <li>
               <Link to="/login">
-                <FaSignInAlt /><span>Login</span> 
+                <FaSignInAlt />
+                <span>Login</span>
               </Link>
             </li>
             <li>
               <Link to="/register">
-                <FaUser /><span>Register</span> 
+                <FaUser />
+                <span>Register</span>
               </Link>
             </li>
           </>

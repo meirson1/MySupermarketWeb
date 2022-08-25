@@ -1,4 +1,4 @@
-import { LoadScript } from '@react-google-maps/api';
+import { LoadScript } from "@react-google-maps/api";
 
 // Componnents
 import Map from "../components/Map";
@@ -6,15 +6,15 @@ import Map from "../components/Map";
 class LoadScriptOnlyIfNeeded extends LoadScript {
   componentDidMount() {
     const cleaningUp = true;
-    const isBrowser = typeof document !== 'undefined'; // require('@react-google-maps/api/src/utils/isbrowser')
+    const isBrowser = typeof document !== "undefined"; // require('@react-google-maps/api/src/utils/isbrowser')
     const isAlreadyLoaded =
       window.google &&
       window.google.maps &&
-      document.querySelector('body.first-hit-completed'); // AJAX page loading system is adding this class the first time the app is loaded
+      document.querySelector("body.first-hit-completed"); // AJAX page loading system is adding this class the first time the app is loaded
     if (!isAlreadyLoaded && isBrowser) {
       // @ts-ignore
       if (window.google && !cleaningUp) {
-        console.error('google api is already presented');
+        console.error("google api is already presented");
         return;
       }
 
@@ -28,13 +28,11 @@ class LoadScriptOnlyIfNeeded extends LoadScript {
 }
 
 const MapsPage = () => {
-	
   return (
-     <LoadScriptOnlyIfNeeded
-       googleMapsApiKey='AIzaSyCbS0WcrG3esjA5jBtqs_N1Ll3bGkm4Z5k'>
-       <Map/>
-     </LoadScriptOnlyIfNeeded>
-  )
-}
+    <LoadScriptOnlyIfNeeded googleMapsApiKey="AIzaSyCbS0WcrG3esjA5jBtqs_N1Ll3bGkm4Z5k">
+      <Map />
+    </LoadScriptOnlyIfNeeded>
+  );
+};
 
 export default MapsPage;

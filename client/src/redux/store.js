@@ -9,7 +9,7 @@ import {
   getProductsDetailsReducer,
   getProductsReducer,
 } from "./reducers/productReducer";
-import { getLocationsReducer } from './reducers/locationReducer';
+import { getLocationsReducer } from "./reducers/locationReducer";
 
 const reducer = combineReducers({
   auth: authReducer,

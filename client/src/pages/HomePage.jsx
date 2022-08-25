@@ -20,16 +20,28 @@ function HomePage() {
       toast.dismiss();
     }
   }, [client, navigate, dispatch]);
+
   return (
     <>
       <section className="heading">
-        <h1>Welcome {client && client.name}</h1>
+        <br />
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "right",
+          }}
+        >
+          <h1>Welcome {client && client.name}</h1>
+        </div>
       </section>
-      <MapsPage>Shops Map</MapsPage>
       <br />
       <Video embedId="LC_qM1P6nG4" />
       <br />
-      <Weather />
+      <div style={{ display: "flex", flexdirection: "row" }}>
+        <MapsPage />
+        <Weather />
+      </div>
     </>
   );
 }

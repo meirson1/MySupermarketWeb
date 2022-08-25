@@ -45,5 +45,5 @@ export const sendCartDataToDB =
         return qs.stringify(params);
       },
     };
-      await axios(config);
+    await axios(config);
   };

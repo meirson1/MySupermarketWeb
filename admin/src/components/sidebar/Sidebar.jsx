@@ -8,7 +8,7 @@ import {
   AttachMoney,
   BarChart,
 } from "@mui/icons-material";
-import FacebookIcon from '@mui/icons-material/Facebook';
+import FacebookIcon from "@mui/icons-material/Facebook";
 import { Link } from "react-router-dom";
 
 export default function Sidebar() {
