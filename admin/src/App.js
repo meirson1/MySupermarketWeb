@@ -12,6 +12,8 @@ import NewProduct from "./pages/newProduct/NewProduct";
 import WidgetLg from "./components/widgetLg/WidgetLg";
 import PostFB from "./components/postfb/PostFB";
 import Stats from "./pages/stats/Stats";
+import "./fonts/Roboto/Roboto-Bold.ttf";
+
 
 function App() {
   return (
