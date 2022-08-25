@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState, useMemo } from "react";
 import axios from "axios";
 
-const API_URL = "http://localhost:8080/api/products";
+const API_URL = "http://localhost:8080/api/products?search=&department=all";
 
 export default function ProductList() {
   const [data, setData] = useState([]);
