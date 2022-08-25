@@ -27,7 +27,7 @@ class LoadScriptOnlyIfNeeded extends LoadScript {
   }
 }
 
-const MapsPage = () => {
+const Maps = () => {
   return (
     <LoadScriptOnlyIfNeeded googleMapsApiKey="AIzaSyCbS0WcrG3esjA5jBtqs_N1Ll3bGkm4Z5k">
       <Map />
@@ -35,4 +35,4 @@ const MapsPage = () => {
   );
 };
 
-export default MapsPage;
+export default Maps;

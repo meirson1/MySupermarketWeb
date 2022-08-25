@@ -1,4 +1,4 @@
-import "../styles/HomePage.css";
+import "../styles/Shop.css";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Select from "react-select";

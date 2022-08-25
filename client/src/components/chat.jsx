@@ -31,8 +31,8 @@ export default function Chat() {
   const renderChat = () => {
     return chat.map(({ name, message }, index) => (
       <div key={index}>
-        <h3>
-          {name}: <span>{message}</span>
+        <h3 className="chat__h3">
+          {name}: <span className="chat__span">{message}</span>
         </h3>
       </div>
     ));
@@ -47,15 +47,17 @@ export default function Chat() {
         margin: "5rem",
       }}
     >
-      <form onSubmit={onMessageSubmit}>
-        <h1>Messenger</h1>
-        <div className="name-field">
+      
+      <form className="chat__form" onSubmit={onMessageSubmit}>
+        <h2>Messenger</h2>
+        <div className="chat__name-field">
           <TextField
             name="name"
             onChange={(e) => onTextChange(e)}
             value={state.name}
             label="Name"
           />
+       
         </div>
         <div>
           <TextField
@@ -67,10 +69,11 @@ export default function Chat() {
             label="Message"
           />
         </div>
-        <button>Send Message</button>
+      
+        <button className="chat__button">Send Message</button>
       </form>
-      <div className="render-chat">
-        <h1>Chat Log</h1>
+      <div className="chat__render">
+        <h3>Chat Log</h3>
         {renderChat()}
       </div>
     </div>
