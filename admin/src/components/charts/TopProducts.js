@@ -13,13 +13,25 @@ export const TopProductsChart = () => {
     axios.get(API_URL).then((data) => setData(data.data));
   }, []);
 
+console.log(data);
+
   useEffect(() => {
     c3.generate({
       bindto: "#chartProducts",
+      legend: {
+        show: true
+      },
+      axis: {
+        x: {
+          type: 'category',
+          categories: [],
+          show: false
+        }
+      },
       data: {
         columns: data.map(item => [item._id, item.count]),
         type: "bar",
-      },
+      }
     });
   }, [data[0]]);
 
