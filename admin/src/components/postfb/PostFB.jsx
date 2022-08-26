@@ -4,7 +4,7 @@ import axios from "axios";
 import "./postfb.css";
 
 const PostOnFB = () =>{
-  const [data, setData] = useState("");
+  const [data, setData] = useState(null);
 
   function getData(val) {
     setData(val.target.value);
@@ -15,7 +15,7 @@ const PostOnFB = () =>{
       .post("https://graph.facebook.com/109443241883186/feed?", {
         message: data,
         access_token:
-          "EAAGXCeNMPyMBAIlP9aMxFgfgQDmZB0eeEkjWdZAZBUTqVR5jq9wZC184kdrkOKLAZB0PoH3YCZC6N8SZCPVha2fWreqAE7YZCoCS7fjdLavZBCaJQG5giuhgWK4d5RRuHSusGO2MLsAZC93kWjRB26F9XRcR0Vov7DaSyPHAnR8AMyx0XtmJXJhx2i",
+          "EAAGXCeNMPyMBAD0QSLz0gDZBBgrBOIOJ9usZA2PtVQ14rCuTiEWUtoYk2TOmH6YE7TxjaUGuAtx7nlB9a7MZBCM1YdwXWIXkSp0rYtSGpIJAymmYjjO3WyBA24vs3wyr3JCYRzLkuvfoOT8akRrvDmmheougosZAzDbz87H8AEnBDM32F41JZBGdl6JroYvLi3xFDav8wxgZDZD",
       })
       .then(
         (res) => {
